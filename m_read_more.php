@@ -149,8 +149,9 @@ include_once('connection.php');
 					</ul>
 				</li>
 				<li ><a href="users.php"><i class="fa fa-user"></i> Users</a></li>
-				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
-				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
+				
+				</li>
+
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
 					<li><a href="#">Help</a></li>

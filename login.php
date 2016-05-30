@@ -10,7 +10,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Dhangar Mahasabha</title>
+	<title>Harmony - Free responsive Bootstrap admin template by Themestruck.com</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">

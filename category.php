@@ -173,8 +173,8 @@ function validate(thisform)
 					</ul>
 				</li>
 				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
-				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
-				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
+				
+				</li>
 			
 
 				<!-- Account from above -->
