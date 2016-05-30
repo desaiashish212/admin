@@ -1,0 +1,102 @@
+				<?include_once ('connection.php');?>
+				<li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+				<li><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
+					<ul>
+						<?php
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1"); 
+				
+				$i = 0;
+				
+				while($row=mysqli_fetch_array($sql))
+				{
+					$category_id=$row['0'];
+					?>
+					
+						
+						<!-- news containt-->
+					<li><a href="m_news.php?id=<?=$category_id?>&name=<?=$row['1']?>"> <? echo $row['1']; ?></a></li>
+						
+					<? 
+					
+					$i++;					
+				}
+			
+				?>
+					</ul>
+				</li>
+				<li><a href="#"><i class="fa fa-desktop"></i>Hindi</a>
+					<ul>
+						<?php
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2"); 
+				
+				$i = 0;
+				
+				while($row=mysqli_fetch_array($sql))
+				{
+					$category_id=$row['0'];
+					?>
+					
+						
+						<!-- news containt-->
+					<li><a href="h_news.php?id=<?=$category_id?>&name=<?=$row['1']?>"> <? echo $row['1']; ?></a></li>
+						
+					<? 
+					
+					$i++;					
+				}
+			
+				?>
+					</ul>
+				</li>
+				<li><a href="#"><i class="fa fa-desktop"></i>English</a>
+					<ul>
+					
+						<?php
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=3"); 
+				
+				$i = 0;
+				
+				while($row=mysqli_fetch_array($sql))
+				{
+					$category_id=$row['0'];
+					?>
+					
+						
+						<!-- news containt-->
+					<li><a href="e_news.php?id=<?=$category_id?>&name=<?=$row['1']?>"> <? echo $row['1']; ?></a></li>
+						
+					<? 
+					
+					$i++;					
+				}
+			
+				?>
+					</ul>
+				</li>
+				<li ><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
+				<li><a href="#"><i class="fa fa-desktop"></i>Category</a>
+					<ul>
+						<li><a href="m_category.php">Marathi</a></li>
+						<li><a href="h_category.php">Hindi</a></li>
+						<li><a href="e_category.php">English</a></li>
+					
+					</ul>
+				</li>
+				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
+				<li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
+				<li><a href="charts.html"><i class="fa fa-pie-chart"></i> Charts</a></li>
+				<li><a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown</a>
+					<ul>
+						<li><a href="#">2nd level</a></li>
+						<li><a href="#">2nd level</a></li>
+						<li><a href="#">3rd level</a>
+							<ul>
+								<li><a href="#">3rd level</a></li>
+								<li><a href="#">3rd level</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="#"><i class="fa fa-files-o"></i> Sample Pages</a>
+				
+				
