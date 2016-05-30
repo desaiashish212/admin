@@ -148,7 +148,6 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				</li>
 				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
 				
-				</li>
 
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
