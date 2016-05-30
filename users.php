@@ -149,8 +149,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				<li class="open"><a href="users.php"><i class="fa fa-user"></i> Users</a></li>
-				
-				</li>
+				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
+				<li ><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
 			
 
 				<!-- Account from above -->

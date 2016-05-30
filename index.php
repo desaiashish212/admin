@@ -147,7 +147,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
-				
+				<li><a href="advertise.php"><i class="fa fa-pie-chart"></i> Advertise</a></li>
+				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
 
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
@@ -179,10 +180,10 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<div class="panel-body bk-primary text-light">
 												<div class="stat-panel text-center">
 													<div class="stat-panel-number h1 ">24</div>
-													<div class="stat-panel-title text-uppercase">New Users</div>
+													<div class="stat-panel-title text-uppercase">All Users</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
@@ -190,7 +191,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<div class="panel-body bk-success text-light">
 												<div class="stat-panel text-center">
 													<div class="stat-panel-number h1 ">8</div>
-													<div class="stat-panel-title text-uppercase">Support Tickets</div>
+													<div class="stat-panel-title text-uppercase">Marathi News Reader</div>
 												</div>
 											</div>
 											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
@@ -201,7 +202,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<div class="panel-body bk-info text-light">
 												<div class="stat-panel text-center">
 													<div class="stat-panel-number h1 ">58</div>
-													<div class="stat-panel-title text-uppercase">New Orders</div>
+													<div class="stat-panel-title text-uppercase">Hindi News Reader</div>
 												</div>
 											</div>
 											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
@@ -212,7 +213,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<div class="panel-body bk-warning text-light">
 												<div class="stat-panel text-center">
 													<div class="stat-panel-number h1 ">18</div>
-													<div class="stat-panel-title text-uppercase">New Comments</div>
+													<div class="stat-panel-title text-uppercase">English News Reader</div>
 												</div>
 											</div>
 											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
@@ -280,14 +281,14 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<div class="row">
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Pie Chart</div>
+									<div class="panel-heading">Month news</div>
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-md-4">
 												<ul class="chart-dot-list">
-													<li class="a1">date 1</li>
-													<li class="a2">data 2</li>
-													<li class="a3">data 3</li>
+													<li class="a1">Marathi</li>
+													<li class="a2">Hindi</li>
+													<li class="a3">English</li>
 												</ul>
 											</div>
 											<div class="col-md-8">
@@ -301,14 +302,14 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 							</div>
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Doughnut</div>
+									<div class="panel-heading">All news</div>
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-md-4">
 												<ul class="chart-dot-list">
-													<li class="a1">date 1</li>
-													<li class="a2">data 2</li>
-													<li class="a3">data 3</li>
+													<li class="a1">Marathi</li>
+													<li class="a2">Hindi</li>
+													<li class="a3">English</li>
 												</ul>
 											</div>
 											<div class="col-md-8">
