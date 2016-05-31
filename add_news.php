@@ -48,7 +48,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 			<li class="ts-account">
 				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					
+						<li><a href="change_password.php">Change password</a></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>
 			</li>
@@ -148,8 +148,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
-				
-				</li>
+				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
+				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
 			
 
 				<!-- Account from above -->
