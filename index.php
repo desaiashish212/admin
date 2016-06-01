@@ -13,7 +13,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	
+	<!--Google graph chart js initialization-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<title>Dhangar Mahasabha</title>
 
 	<!-- Font awesome -->
@@ -42,7 +43,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 
 <body>
 	<div class="brand clearfix">
-		<a href="index.html" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
+		<a href="index.php" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			<li class="ts-account">
@@ -59,11 +60,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-				<li class="ts-label">Search</li>
-				<li>
-					<input type="text" class="ts-sidebar-search" placeholder="Search here...">
-				</li>
-				<li class="ts-label">Main</li>
+				
+			
 								<?include_once ('connection.php');?>
 				<li class="open"><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
@@ -181,44 +179,63 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 										<div class="panel panel-default">
 											<div class="panel-body bk-primary text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">24</div>
+												<?
+													// Counting number of users in the system	
+													$count_users = mysqli_query($con,"SELECT COUNT(*) FROM users"); 
+													$row = mysqli_fetch_row($count_users);
+													$UserCount = $row[0];
+												
+												?>
+													<div class="stat-panel-number h1 "><?echo $UserCount;?></div>
 													<div class="stat-panel-title text-uppercase">All Users</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="panel panel-default">
 											<div class="panel-body bk-success text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">8</div>
+<?
+		$marathiCount = mysqli_query($con,"select COUNT(*) from users WHERE users.lang_status='1'");
+		$marathiRow = mysqli_fetch_row($marathiCount);										
+?>												
+													<div class="stat-panel-number h1 "><? echo $marathiRow[0];?></div>
 													<div class="stat-panel-title text-uppercase">Marathi Reader</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="panel panel-default">
 											<div class="panel-body bk-info text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">58</div>
+<?
+		$hindiCount = mysqli_query($con,"select COUNT(*) from users WHERE users.lang_status='2'");
+		$hindiRow = mysqli_fetch_row($hindiCount);										
+?>												
+													<div class="stat-panel-number h1 "><?echo $hindiRow[0]?></div>
 													<div class="stat-panel-title text-uppercase">Hindi Reader</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="panel panel-default">
 											<div class="panel-body bk-warning text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">18</div>
+<?
+		$englishCount = mysqli_query($con,"select COUNT(*) from users WHERE users.lang_status='3'");
+		$englishRow = mysqli_fetch_row($englishCount);										
+?>												
+													<div class="stat-panel-number h1 "><? echo $englishRow[0]?></div>
 													<div class="stat-panel-title text-uppercase">English Reader</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -228,51 +245,107 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<div class="row">
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Users Report</div>
+									<div class="panel-heading">Monthly New User</div>
 									<div class="panel-body">
 										<div class="chart">
-											<canvas id="dashReport" height="310" width="600"></canvas>
+										<!--Google graph chart-->
+											 <div id="chart_div"></div> 
 										</div>
+<?
+	// Query to draw graph
+	$graph = mysqli_query($con,"Select count(*) as counts, DATE_FORMAT(created_at, \"%Y-%m\") as \"_month\" 
+from users    
+group by _month
+order by _month
+LIMIT 12");
+
+	$jsonArray = array();
+	while($graph_result = mysqli_fetch_row($graph))
+	{
+		$graphCount =  $graph_result[0];
+		$graphMonth =  $graph_result[1];
+		$jsonArray[] =  array($graphCount,$graphMonth);
+	}
+	
+?>	
+
+<script>
+	  var graphMonth = <?php echo json_encode($graphMonth);?>;	
+	  var graphCount = <?php echo json_encode($graphCount);?>;	
+	  google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+      	
+        var data = google.visualization.arrayToDataTable([
+         ['Months', 'users'],
+         [graphMonth,graphCount],
+         
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Report of Users added in a year',
+            subtitle: '2016',
+          },
+          bars: 'vertical',
+          vAxis: {format: 'decimal'},
+          height: 250,
+          colors: ['#1b9e77']
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        var btns = document.getElementById('btn-group');
+
+        btns.onclick = function (e) {
+
+          if (e.target.tagName === 'BUTTON') {
+            options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+          }
+        }
+      }
+</script>
+
+
 										<div id="legendDiv"></div>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Recent Oreders</div>
+									<div class="panel-heading">New Users</div>
 									<div class="panel-body">
-										<div class="alert alert-dismissible alert-success">
-											<button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
-											<strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-										</div>
+									<?
+											// To display 5 latest users ...
+											$result = mysqli_query($con,"SELECT users.`name`, users.mobile_no, users.email FROM users ORDER BY users.created_at DESC LIMIT 5
+");											
+										?>
 										<table class="table table-hover">
 											<thead>
 												<tr>
-													<th>#</th>
-													<th>First Name</th>
-													<th>Last Name</th>
-													<th>Username</th>
+													<td><td>
+													<th>Name</th>
+													<th>Mobile No.</th>
+													<th>Email ID</th>
 												</tr>
 											</thead>
 											<tbody>
+											<?
+												while($row = mysqli_fetch_array($result)){
+											?>
 												<tr>
-													<th scope="row">1</th>
-													<td>Mark</td>
-													<td>Otto</td>
-													<td>@mdo</td>
+													<th><th>
+													<td><?echo $row[0];?></td>
+													<td><?echo $row[1];?></td>
+													<td><?echo $row[2];?></td>
 												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>Jacob</td>
-													<td>Thornton</td>
-													<td>@fat</td>
-												</tr>
-												<tr>
-													<th scope="row">3</th>
-													<td>Larry</td>
-													<td>the Bird</td>
-													<td>@twitter</td>
-												</tr>
+											<?
+												}
+											?>	
 											</tbody>
 										</table>
 									</div>
@@ -343,29 +416,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
 	
-	<script>
-		
-	window.onload = function(){
-    
-		// Line chart from swirlData for dashReport
-		var ctx = document.getElementById("dashReport").getContext("2d");
-		window.myLine = new Chart(ctx).Line(swirlData, {
-			responsive: true,
-			scaleShowVerticalLines: false,
-			scaleBeginAtZero : true,
-			multiTooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
-		}); 
-		
-		// Pie Chart from doughutData
-		var doctx = document.getElementById("chart-area3").getContext("2d");
-		window.myDoughnut = new Chart(doctx).Pie(doughnutData, {responsive : true});
-
-		// Dougnut Chart from doughnutData
-		var doctx = document.getElementById("chart-area4").getContext("2d");
-		window.myDoughnut = new Chart(doctx).Doughnut(doughnutData, {responsive : true});
-
-	}
-	</script>
+	
 
 </body>
 
