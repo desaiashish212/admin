@@ -6,9 +6,9 @@
    $news=$_POST["news"];
    $m_id=$_POST["m_id"];
    $category =$_POST["category"];
-
+	$date = $_POST["date"];
    
-   $res=mysqli_query($con,"update eng set title='$title', news='$news' where id=$news_id");
+   $res=mysqli_query($con,"update eng set title='$title', news='$news',date='$date' where id=$news_id");
 
    //echo $aff= mysqli_affected_rows($res);
    //exit;

@@ -177,7 +177,7 @@ include_once('connection.php');
 						include_once('connection.php');
 			$news_id=$_GET['id'];
 			$category = $_GET['category'];
-		   $query="select title, news, status from eng where id=$news_id";
+		   $query="select title, news, status,date from eng where id=$news_id";
 			$rs=mysqli_query($con,$query);
 		
 			 $res=mysqli_fetch_array($rs);
@@ -206,7 +206,12 @@ include_once('connection.php');
 											<textarea class="form-control"  name="news" id="news" value="" rows="10"><? echo $res[1] ?> </textarea>
 										</div>
 									</div>
-									
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Date</label>
+										<div class="col-sm-10">
+											<input type="date" name="date" id="date" value="<?=$res[3] ?>">
+										</div>
+									</div>
 								
 									<input type="hidden" name="id" id="id" value="<?= $_GET['id']?>"/>
 									<input type="hidden" name="m_id" id="m_id" value="<?= $_GET['m_id']?>"/>
@@ -225,15 +230,6 @@ include_once('connection.php');
 
 					</div>
 				</div>
-				
-				<div class="row">
-					<div class="clearfix pt pb">
-						<div class="col-md-12">
-							<em>Thank you for using <a href="http://themestruck.com/theme/harmony/"> Harmony Admin Theme </a> by <a href="http://themestruck.com/">ThemeStruck</a></em>
-						</div>
-					</div>
-				</div>
-
 			</div>
 		</div>
 	</div>

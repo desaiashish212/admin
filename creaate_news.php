@@ -54,8 +54,9 @@
 	$category=(isset($_POST['category']) ? $_POST['category'] : null);
 	date_default_timezone_set("Asia/Kolkata");
 	$server_time=date("h:i:s");
-
-	$res=mysqli_query($con,"insert into marathi (title,news,time,status,path,date) values ('$title','$news','$server_time','$status','$path','$date')");
+	
+	$newsDate=(isset($_POST['date']) ? $_POST['date'] : null);
+	$res=mysqli_query($con,"insert into marathi (title,news,time,status,path,date) values ('$title','$news','$server_time','$status','$path','$newsDate')");
 	if($res<=0)
    {
    		$_SESSION["MSG"]="News not added, Try Again";

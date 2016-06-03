@@ -175,7 +175,7 @@ include_once('connection.php');
 						include_once('connection.php');
 			$news_id=$_GET['id'];
 			$category = $_GET['category'];
-		 $query="select title, news, status from hindi where id=$news_id";
+		 $query="select title, news,status,date from hindi where id=$news_id";
 			$rs=mysqli_query($con,$query);
 		
 			 $res=mysqli_fetch_array($rs);
@@ -185,7 +185,7 @@ include_once('connection.php');
 						<div class="panel panel-default">
 							<div class="panel-heading">Hindi News</div>
 							<div class="panel-body">
-								<form class="form-horizontal" method="post" action="e_worker_edit_news.php" enctype="multipart/form-data" onSubmit="return validate(this)" >
+								<form class="form-horizontal" method="post" action="h_worker_edit_news.php" enctype="multipart/form-data" onSubmit="return validate(this)" >
 									<div class="form-group">
 										<label class="col-sm-2 control-label">News Title</label>
 										<div class="col-sm-10">
@@ -204,7 +204,12 @@ include_once('connection.php');
 											<textarea class="form-control"  name="news" id="news" value="" rows="10"><? echo $res[1] ?></textarea>
 										</div>
 									</div>
-									
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Date</label>
+										<div class="col-sm-10">
+											<input type="date" name="date" id="date" value="<?=$res[3] ?>">
+										</div>
+									</div>
 								
 									<input type="hidden" name="id" id="id" value="<?= $_GET['id']?>"/>
 									<input type="hidden" name="m_id" id="m_id" value="<?= $_GET['m_id']?>"/>

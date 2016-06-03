@@ -194,7 +194,12 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<textarea class="form-control" placeholder="enter news description here" name="news" id="news"  rows="10"></textarea>
 										</div>
 									</div>
-									
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Date</label>
+										<div class="col-sm-10">
+											<input type="date" name="date" id="date"/>
+										</div>
+									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Select Image</label>
 										<div class="col-sm-10">
