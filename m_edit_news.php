@@ -43,7 +43,7 @@ include_once('connection.php');
 
 <body>
 	<div class="brand clearfix">
-		<a href="index.html" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
+		<a href="index.php" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			
@@ -60,12 +60,7 @@ include_once('connection.php');
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-				<li class="ts-label">Search</li>
-				<li>
-					<input type="text" class="ts-sidebar-search" placeholder="Search here...">
-				</li>
-				<li class="ts-label">Main</li>
-								<?include_once ('connection.php');?>
+				<?include_once ('connection.php');?>
 				<li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li class="open"><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
 					<ul>
