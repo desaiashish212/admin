@@ -256,7 +256,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	$graph = mysqli_query($con,"Select count(*) as counts, DATE_FORMAT(created_at, \"%Y-%m\") as \"_month\" 
 from users    
 group by _month
-order by _month
+order by _month 
 LIMIT 12");
 
 	$jsonArray = array();
@@ -270,16 +270,33 @@ LIMIT 12");
 ?>	
 
 <script>
-	  var graphMonth = <?php echo json_encode($graphMonth);?>;	
-	  var graphCount = <?php echo json_encode($graphCount);?>;	
+	  var graphMonth = <?php echo json_encode($jsonArray[0][0]);?>;	
+	  var graphCount = <?php echo json_encode($jsonArray[0][1]);?>;	
+	  
+	  var graphMonth1 = <?php echo json_encode($jsonArray[1][0]);?>;	
+	  var graphCount1 = <?php echo json_encode($jsonArray[1][1]);?>;	
+	  
+	  var graphMonth2 = <?php echo json_encode($jsonArray[2][0]);?>;	
+	  var graphCount2 = <?php echo json_encode($jsonArray[2][1]);?>;	
+	  
+	  var graphMonth3 = <?php echo json_encode($jsonArray[3][0]);?>;	
+	  var graphCount3 = <?php echo json_encode($jsonArray[3][1]);?>;	
+	  
+	  var graphMonth4 = <?php echo json_encode($jsonArray[4][0]);?>;	
+	  var graphCount4 = <?php echo json_encode($jsonArray[4][1]);?>;	
+	  
 	  google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
       	
         var data = google.visualization.arrayToDataTable([
-         ['Months', 'users'],
-         [graphMonth,graphCount],
+         ['months', 'users'],
+         [graphCount,graphMonth],
+         [graphCount1,graphMonth1],
+         [graphCount2,graphMonth2],
+         [graphCount3,graphMonth3],
+         [graphCount4,graphMonth4],
          
         ]);
 

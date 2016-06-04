@@ -203,7 +203,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Select Image</label>
 										<div class="col-sm-10">
-											<input id="input-43" type="file" name="file" accept="image/*">
+											<input id="input-43" type="file" name="files[]" multiple accept="image/*">
 										</div>
 									</div>
 								

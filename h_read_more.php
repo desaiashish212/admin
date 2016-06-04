@@ -173,7 +173,7 @@ include_once('connection.php');
 						<? 
 			$news_id=$_GET['id']; 
 			
-			$query=mysqli_query($con,"SELECT title,news,time,date, `status`,path FROM hindi WHERE id = $news_id");
+			$query=mysqli_query($con,"SELECT title,news,time,date, `status`,path,path2 FROM hindi WHERE id = $news_id");
 			//$rs=mysqli_query($con,$query);
 			//$res=mysqli_fetch_row($rs);
 			while($row=mysqli_fetch_array($query))
@@ -183,13 +183,22 @@ include_once('connection.php');
 				$date = $row['4']; 	
 				$time = $row['3']; 	
 				$path = $row['5'];
+				$path2 = $row['6'];
 				?>
 				<div class="jumbotron">
 					<h1><? echo $title; 	?></h1>
 					<h3><? echo $date; ?>&emsp;&emsp;<? echo $time 	?></h3>
 					<p><? echo $news; 	?></p>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="<?echo $path?>" width="400" height="350"> </br>
-					
+					<hr>
+				<?
+					if(!$path2==null){
+						
+				?>				
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="<?echo $path2?>" width="400" height="350"> </br>
+				<?
+					}
+				?>	
 				</div>
 				<?
 			}	

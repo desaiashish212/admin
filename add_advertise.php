@@ -176,11 +176,20 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 							<div class="panel-body">
 								<form method="POST" class="form-horizontal" method="post" action="worker_adds.php" enctype="multipart/form-data">
 									
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Select Advertise Language</label>
+										<div class="col-sm-10">
+											<select name="language">
+												<option value="1"> Marathi</option>
+												<option value="2"> Hindi</option>
+												<option value="3"> English</option>
+											</select>
+										</div>
+									</div>
 									
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Select Banner</label>
 										<div class="col-sm-10">
-										
 											<input id="input-43" type="file" name="file" accept="image/*">
 											<div id="errorBlock43" class="help-block"></div>
 										</div>
