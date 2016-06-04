@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2016 at 02:13 PM
+-- Generation Time: Jun 04, 2016 at 05:53 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.15
 
@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `district` varchar(32) NOT NULL,
   `gcm_reg_id` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `birth` varchar(30) NOT NULL,
+  `birth` date DEFAULT NULL,
   `city` varchar(30) NOT NULL,
   `pincode` varchar(30) NOT NULL,
   `occupation` varchar(30) NOT NULL,
@@ -328,13 +328,13 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `mobile_no`, `state`, `district`, `gcm_reg_id`, `email`, `birth`, `city`, `pincode`, `occupation`, `lang_status`, `status`, `created_at`) VALUES
-(65, 'Ashish', '9421355900', 'Maharashtra', 'Delhi', 'APA91bFZcnpNx45gTFQAcxjQ6OaX3Fgtc8BDFhFbanqoV2wzZSSn4fFCXIeHQv1MDXcUWX3YdoX19GHu1sSNEBIgjXHjy5D6tZ0mK99GmHedpaCYj7oyk_bqOaO4SpglS67BvQV9cnQrj5UtvmUw1A_47cXBnMPR6Q', 'desaiashish@gmail.com', '19/6/1992', 'Liverpool', '416410', 'Student', 1, 1, '2016-02-01 13:52:45'),
-(68, 'Ashish', '9421124256', 'Maharashtra', 'Delhi', 'APA91bFqcu5ZOdXQtNNn4VOe-RElhWiJ5wGzX2D8LT4YBNujzqp667pzum1-nMKcHA0DlaIx3Ou74EmuhH6RzYzt-0mO2pjBjVbclwMiJ1uQXRs83pENwuoVS9MBZNVWYaCcNvRZaJgvcUZNBjZ2EO2tQCj4WqthzQ', 'desaiashish212@gmail.com', '19/6/1992', 'Derby', '416410', 'Android Develepor', 1, 1, '2016-03-15 14:03:01'),
-(69, 'Mahi', '7507838143', 'Maharashtra', 'Delhi', 'APA91bHHD6CXdNU0lJ6XNVK2NHpDw7TUNZr8dBHJg6SB1sEpAnJ-m4wzWeQKNKGdPvQNRYrWlPp_IvXsXFoDr0ff3k5bpz1QxbJjhbloamfqEtt2qW9vNmNNNo6kU6PcS1jyHOb1jGldXIboVB_SUiNoAg-lqH89rw', '', '19/6/1992', 'Oxford', '416410', 'Software Engineer', 2, 1, '2016-04-12 14:22:06'),
-(70, 'Mauu', '9975911329', 'Karnataka', 'Los Angeles', 'APA91bFqcu5ZOdXQtNNn4VOe-RElhWiJ5wGzX2D8LT4YBNujzqp667pzum1-nMKcHA0DlaIx3Ou74EmuhH6RzYzt-0mO2pjBjVbclwMiJ1uQXRs83pENwuoVS9MBZNVWYaCcNvRZaJgvcUZNBjZ2EO2tQCj4WqthzQ', '', '', '', '', '', 2, 1, '2016-05-09 15:33:15'),
-(71, 'Lalya', '9876543210', 'Maharashtra', 'Delhi', 'APA91bF5w9aHuA2yHIWdUyTcDHhBTW-6DAK2p1KMCIOApxcP70tFOXxHGnppcYXI_KyNIOxGy1pNL1cChmRjpcUJm0qUgo7Ak1mHYO04aby4fNzEeSDyo01j-KGbQoyeOB0tTc4K10gl27YLKg4TfRI5voB6KdlDTg', '', '15/6/1992', 'Derby', '410210', 'Student', 3, 1, '2016-05-09 16:32:40'),
-(72, 'Onkar', '987612345', 'Maharashtra', 'Delhi', 'APA91bFqcu5ZOdXQtNNn4VOe-RElhWiJ5wGzX2D8LT4YBNujzqp667pzum1-nMKcHA0DlaIx3Ou74EmuhH6RzYzt-0mO2pjBjVbclwMiJ1uQXRs83pENwuoVS9MBZNVWYaCcNvRZaJgvcUZNBjZ2EO2tQCj4WqthzQ', 'onkar@gmail.com', '24/6/1992', 'Cambridge', '410002', 'student', 3, 1, '2016-01-01 18:12:24'),
-(73, 'Swarup', '9382327616', 'Maharashtra', 'Delhi', 'APA91bFqcu5ZOdXQtNNn4VOe-RElhWiJ5wGzX2D8LT4YBNujzqp667pzum1-nMKcHA0DlaIx3Ou74EmuhH6RzYzt-0mO2pjBjVbclwMiJ1uQXRs83pENwuoVS9MBZNVWYaCcNvRZaJgvcUZNBjZ2EO2tQCj4WqthzQ', '', '2/6/1992', 'Oxford', '543267', 'Student', 1, 1, '2016-05-11 02:25:53');
+(65, 'Ashish', '9421355900', 'Maharashtra', 'Delhi', 'APA91bFZcnpNx45gTFQAcxjQ6OaX3Fgtc8BDFhFbanqoV2wzZSSn4fFCXIeHQv1MDXcUWX3YdoX19GHu1sSNEBIgjXHjy5D6tZ0mK99GmHedpaCYj7oyk_bqOaO4SpglS67BvQV9cnQrj5UtvmUw1A_47cXBnMPR6Q', 'desaiashish@gmail.com', '2016-06-04', 'Liverpool', '416410', 'Student', 1, 1, '2016-02-01 13:52:45'),
+(68, 'Ashish', '9421124256', 'Maharashtra', 'Delhi', 'APA91bFqcu5ZOdXQtNNn4VOe-RElhWiJ5wGzX2D8LT4YBNujzqp667pzum1-nMKcHA0DlaIx3Ou74EmuhH6RzYzt-0mO2pjBjVbclwMiJ1uQXRs83pENwuoVS9MBZNVWYaCcNvRZaJgvcUZNBjZ2EO2tQCj4WqthzQ', 'desaiashish212@gmail.com', '2016-06-12', 'Derby', '416410', 'Android Develepor', 1, 1, '2016-03-15 14:03:01'),
+(69, 'Mahi', '7507838143', 'Maharashtra', 'Delhi', 'APA91bHHD6CXdNU0lJ6XNVK2NHpDw7TUNZr8dBHJg6SB1sEpAnJ-m4wzWeQKNKGdPvQNRYrWlPp_IvXsXFoDr0ff3k5bpz1QxbJjhbloamfqEtt2qW9vNmNNNo6kU6PcS1jyHOb1jGldXIboVB_SUiNoAg-lqH89rw', '', '2016-05-26', 'Oxford', '416410', 'Software Engineer', 2, 1, '2016-04-12 14:22:06'),
+(70, 'Mauu', '9975911329', 'Karnataka', 'Los Angeles', 'APA91bFqcu5ZOdXQtNNn4VOe-RElhWiJ5wGzX2D8LT4YBNujzqp667pzum1-nMKcHA0DlaIx3Ou74EmuhH6RzYzt-0mO2pjBjVbclwMiJ1uQXRs83pENwuoVS9MBZNVWYaCcNvRZaJgvcUZNBjZ2EO2tQCj4WqthzQ', '', '2016-06-04', '', '', '', 2, 1, '2016-05-09 15:33:15'),
+(71, 'Lalya', '9876543210', 'Maharashtra', 'Delhi', 'APA91bF5w9aHuA2yHIWdUyTcDHhBTW-6DAK2p1KMCIOApxcP70tFOXxHGnppcYXI_KyNIOxGy1pNL1cChmRjpcUJm0qUgo7Ak1mHYO04aby4fNzEeSDyo01j-KGbQoyeOB0tTc4K10gl27YLKg4TfRI5voB6KdlDTg', '', '1994-07-05', 'Derby', '410210', 'Student', 3, 1, '2016-05-09 16:32:40'),
+(72, 'Onkar', '987612345', 'Maharashtra', 'Delhi', 'APA91bFqcu5ZOdXQtNNn4VOe-RElhWiJ5wGzX2D8LT4YBNujzqp667pzum1-nMKcHA0DlaIx3Ou74EmuhH6RzYzt-0mO2pjBjVbclwMiJ1uQXRs83pENwuoVS9MBZNVWYaCcNvRZaJgvcUZNBjZ2EO2tQCj4WqthzQ', 'onkar@gmail.com', '1993-05-28', 'Cambridge', '410002', 'student', 3, 1, '2016-01-01 18:12:24'),
+(73, 'Swarup', '9382327616', 'Maharashtra', 'Delhi', 'APA91bFqcu5ZOdXQtNNn4VOe-RElhWiJ5wGzX2D8LT4YBNujzqp667pzum1-nMKcHA0DlaIx3Ou74EmuhH6RzYzt-0mO2pjBjVbclwMiJ1uQXRs83pENwuoVS9MBZNVWYaCcNvRZaJgvcUZNBjZ2EO2tQCj4WqthzQ', '', '2016-06-04', 'Oxford', '543267', 'Student', 1, 1, '2016-05-11 02:25:53');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

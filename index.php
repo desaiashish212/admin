@@ -334,12 +334,11 @@ LIMIT 12");
 							</div>
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">New Users</div>
+									<div class="panel-heading">TODAYS BIRTDAYS</div>
 									<div class="panel-body">
 									<?
 											// To display 5 latest users ...
-											$result = mysqli_query($con,"SELECT users.`name`, users.mobile_no, users.email FROM users ORDER BY users.created_at DESC LIMIT 5
-");											
+		$result = mysqli_query($con,"SELECT users.id, users.`name`, users.mobile_no, users.email from users WHERE DATE_FORMAT(users.birth,'%d-%m') = DATE_FORMAT(NOW(),'%d-%m') LIMIT 5");											
 										?>
 										<table class="table table-hover">
 											<thead>
@@ -348,6 +347,7 @@ LIMIT 12");
 													<th>Name</th>
 													<th>Mobile No.</th>
 													<th>Email ID</th>
+													<th>Wish</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -356,15 +356,24 @@ LIMIT 12");
 											?>
 												<tr>
 													<th><th>
-													<td><?echo $row[0];?></td>
+													<?
+														//echo $row[0];
+														// this is user-id may need for further Query															// pass thi id to href below -->
+													?>
 													<td><?echo $row[1];?></td>
 													<td><?echo $row[2];?></td>
+													<td><?echo $row[3];?></td>
+													<td><a href="#" class="btn btn-primary btn-sm">Wish</a></td>
+													
 												</tr>
-											<?
-												}
-											?>	
+												<?
+													}
+												?>	
+										
 											</tbody>
+											
 										</table>
+										<a href="wish_bday.php">View all todays birthdays <i class="fa fa-fw"></i> </a>
 									</div>
 								</div>
 							</div>
