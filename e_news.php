@@ -253,6 +253,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<td width="100"><? echo $row['3']; ?></td>				<!-- Time containt-->
 						<td width="50"><a href="e_edit_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
 						<td width="50"><a href="e_delete_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/delete.jpg" height="30" width="60"/></a></td>
+						<td><a href="#" class="btn btn-primary btn-sm">Notify</a></td>
 						</tr>
 					<? }
 					else
@@ -288,6 +289,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<td><? echo $row['3']; ?></td>
 						<td width="50"><a href="e_edit_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
 						<td width="50"><a href="e_delete_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/delete.jpg" height="30" width="60"/></a></td>
+						<td><a href="#" class="btn btn-primary btn-sm">Notify</a></td>
 						</tr>					
 				<? 	} 
 					$i++;					

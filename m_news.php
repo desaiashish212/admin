@@ -202,6 +202,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<th>Time</th>
 											<th>Edit</th>
 											<th>Delete</th>
+											<th>Notify</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -212,6 +213,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<th>Time</th>
 											<th >Edit</th>
 											<th >Delete</th>
+											<th>Notify</th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -248,6 +250,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<td width="100"><? echo $row['3']; ?></td>				<!-- Time containt-->
 						<td width="50"><a href="m_edit_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
 						<td width="50"><a href="m_delete_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/delete.jpg" height="30" width="60"/></a></td>
+						<td><a href="#" class="btn btn-primary btn-sm">Notify</a></td>
 						</tr>
 					
 				<? 	 
