@@ -1,17 +1,14 @@
 <?php session_start();
 	include_once('connection.php');
 	
-	$message=$_POST["message"];
+	$message1=$_POST["message"];
 	$languages=$_POST["languages"];
 	
 	//$res=mysql_query("insert into category (caregory_name,lang_status) values ('$name','$lang')");
-	$sql = "insert into notifications (messages,language) values ('$message','$languages')";
-	//$aff=mysql_affected_rows();
-	$result = mysqli_query($con, $sql);
+	
 	$pushStatus = '';
-	if($sql)
-   {
-	  $query = "SELECT gcm_reg_id FROM users WHERE lang_status=1";
+	
+	  $query = "SELECT gcm_reg_id FROM users WHERE lang_status=$languages";
     if($query_run = mysqli_query($con,$query)) {
 
         $gcmRegIds = array();
@@ -27,24 +24,37 @@
 
         $message = array('message' => $pushMessage);
         $pushStatus = sendPushNotification($gcmRegIds, $message);
-		echo $pushStatus;
+		
+		if($pushStatus>0){
+			$sql = "insert into notifications (messages,language) values ('$message1','$languages')";
+	//$aff=mysql_affected_rows();
+		$result = mysqli_query($con, $sql);
+		if($sql)
+		{
+		
 
-		exit;
 		$_SESSION["MSG"]="Success";
-			header("Location: notifications.php");
-
-    }   
+			header("Location: notifications.php");	
 //	}
 			
    }
    else
    {
 
-			$_SESSION["MSG"]="Category not added, Try Again";
+			$_SESSION["MSG"]="Notification sending failed, Try Again";
 			header("Location: notifications.php");
    		
    }
-  
+		}
+else
+   {
+
+			$_SESSION["MSG"]="Notification sending failed, no user present";
+			header("Location: notifications.php");
+   		
+   }		
+    
+  }
    
    function sendPushNotification($registatoin_ids, $message) {
 		//Google cloud messaging GCM-API url
@@ -67,11 +77,12 @@
 		//curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);	
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-        $result = curl_exec($ch);				
+       echo  $result = curl_exec($ch);				
         if ($result === FALSE) {
             die('Curl failed: ' . curl_error($ch));
         }
         curl_close($ch);
-        return $result;
+		$pretty = json_decode($result);
+        return $pretty->success;
     }
 ?>

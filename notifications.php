@@ -297,7 +297,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- news containt-->
 					
 					
-						<td ><a href="m_delete_category.php?id=<?= $row["id"]?> "><img src="img/delete.jpg" height="30" width="60"/></a></td>
+						<td ><a href="worker_delete_notification.php?id=<?= $row["id"]?> "><img src="img/delete.jpg" height="30" width="60"/></a></td>
 						</tr>
 					
 				<?  
