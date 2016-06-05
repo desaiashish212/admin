@@ -338,7 +338,7 @@ LIMIT 12");
 									<div class="panel-body">
 									<?
 											// To display 5 latest users ...
-		$result = mysqli_query($con,"SELECT users.id, users.`name`, users.mobile_no, users.email from users WHERE DATE_FORMAT(users.birth,'%d-%m') = DATE_FORMAT(NOW(),'%d-%m') LIMIT 5");											
+		$result = mysqli_query($con,"SELECT users.id, users.`name`, users.mobile_no, users.email, users.lang_status from users WHERE DATE_FORMAT(users.birth,'%d-%m') = DATE_FORMAT(NOW(),'%d-%m') LIMIT 5");											
 										?>
 										<table class="table table-hover">
 											<thead>
@@ -363,7 +363,7 @@ LIMIT 12");
 													<td><?echo $row[1];?></td>
 													<td><?echo $row[2];?></td>
 													<td><?echo $row[3];?></td>
-													<td><a href="#" class="btn btn-primary btn-sm">Wish</a></td>
+													<td><a href="worker_birth_notifications.php?id=<?=$row[0];?>&lang=<?=$row[4];?>" class="btn btn-primary btn-sm">Wish</a></td>
 													
 												</tr>
 												<?
