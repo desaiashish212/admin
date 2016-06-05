@@ -83,6 +83,27 @@ class DbHandler {
         return $result;
     }
     
+	public function createFeedback($name, $mobile,$feedback) {
+
+        $stmt = $this->conn->prepare("INSERT INTO feedback(name, mobile, feedback) values(?, ?, ?)");
+        $stmt->bind_param("sss", $name, $mobile,$feedback);
+
+        $result = $stmt->execute();
+
+        $stmt->close();
+		
+		if ($result) {
+
+                return USER_CREATED_SUCCESSFULLY;
+            } else {
+              
+                return USER_CREATE_FAILED;
+            }
+
+       // return $result;
+    }
+	
+	
     /**
      * Checking for duplicate user by mobile number
      * @param String $email email to check in db
