@@ -1,7 +1,9 @@
 <?php session_start();
 if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 {
+include_once('connection.php');
 ?>
+
 <!doctype html>
 <html lang="en" class="no-js">
 
@@ -13,7 +15,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Dhangar Mahasabha</title>
+	<title>Harmony - Free responsive Bootstrap admin template by Themestruck.com</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -49,7 +51,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
 						<li><a href="change_password.php">Change password</a></li>
-					<li><a href="logout.php">Logout</a></li>
+					<li><a href="#">Logout</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -60,7 +62,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 			<ul class="ts-sidebar-menu">
 				<?include_once ('connection.php');?>
 				<li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li ><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
+				<li class="open"><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
 					<ul>
 						<?php
 				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1"); 
@@ -134,7 +136,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				
-				<li class="open"><a href="#"><i class="fa fa-desktop"></i>Category</a>
+				<li><a href="#"><i class="fa fa-desktop"></i>Category</a>
 					<ul>
 						<li><a href="m_category.php">Marathi</a></li>
 						<li><a href="h_category.php">Hindi</a></li>
@@ -145,7 +147,6 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
 				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
 				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
-			
 
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
@@ -168,83 +169,50 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 
 				<div class="row">
 					<div class="col-md-12">
-
-						<h2 class="page-title">Hindi Category</h2>
-							<?php
-				include_once ('connection.php');
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name,category.created_at  FROM category where lang_status=2"); 
-				
-				$i = 0;
-				?>
-				          <a href="category.php?status=2">  <button class="btn btn-primary" type="submit">Add Category</button></a>
-						 
-				<?php
-				if(isset($_SESSION["MSG"]))
-				{ ?>
-					 <div class="alert alert-dismissible alert-success">
-											<button type="button" class="close" data-dismiss="alert"><i class="fa fa-remove"></i></button>
-											<strong><?php echo $_SESSION['MSG'] ?> !</strong>
-										</div>
-						</div>					
-					<?php 
-					unset($_SESSION["MSG"]);
-				}
-					?>
-						<!-- Zero Configuration Table -->
-						<div class="panel panel-default">
-						
-							<div class="panel-heading">HINDI CATEGORIES</div>
-
-							<div class="panel-body">
-								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-									<thead>
-										<tr>
-											<th>Category</th>
-											<th>Created at</th>
-								
-											<th >Delete</th>
-										</tr>
-									</thead>
-									<tfoot>
-										<tr>
-											<th>Category</th>
-											<th>Created at</th>
-											<th >Delete</th>
-										</tr>
-									</tfoot>
-									<tbody>
-										<?
-				while($row=mysqli_fetch_array($sql))
-				{
-					$news_id=$row['0'];
 					
-					?>
-					
-						<tr align="left"> 
-						<td > <? echo $row['1']; ?></td>	<!-- Title containt-->
-						<td > <? echo $row['2']; ?></td>	
-						<!-- news containt-->
-					
-						
-						<td ><a href="h_delete_category.php?id=<?= $row["id"]?> "><img src="img/delete.jpg" height="30" width="60"/></a>
-						<a href="h_update_category.php?id=<?= $row["id"]?> "><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
-						</tr>
-					
-				<? 
-					$i++;					
-				}
+						<h2 class="page-title">Update Category</h2>
+						<?
+						include_once('connection.php');
+			$category = $_GET['id'];
 			
-				?>
-									</tbody>
-								</table>
+		 	$query="SELECT
+category.id,
+category.caregory_name
+FROM
+category
+WHERE
+category.id = '$category'";
+			$rs=mysqli_query($con,$query);
+		
+			 $res=mysqli_fetch_array($rs);
+		 $res[1];
+        ?>
 
-								
+						<div class="panel panel-default">
+							<div class="panel-heading">Hindi Category Update</div>
+							<div class="panel-body">
+								<form class="form-horizontal" method="post" action="update_category_hin.php" onSubmit="return validate(this)" >
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Category name</label>
+										<div class="col-sm-10">
+											<input type="text" placeholder="category name" name="catname" id="title" value="<?=$res[1] ?>" class="form-control mb">
+										</div>
+									</div>
+	<input type="hidden" name="category" id="category" value="<?echo $category?>"/>
+									<div class="form-group">
+										<div class="col-sm-8 col-sm-offset-2">
+											<button class="btn btn-primary" type="submit" value="submit">update</button>
+										</div>
+									</div>
+								</form>
 
 							</div>
 						</div>
 
-						
+					</div>
+				</div>
 				
+			
 
 			</div>
 		</div>
