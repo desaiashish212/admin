@@ -167,7 +167,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 		<?php
 							$id = $_GET["id"];
 				
-				$sql = mysqli_query($con,"SELECT hindi.id, hindi.title, hindi.news, hindi.time,hindi.date FROM hindi where status='$id' ORDER BY hindi.date desc, hindi.time desc"); 
+				$sql = mysqli_query($con,"SELECT hindi.id, hindi.title, hindi.news, hindi.time,hindi.date,hindi.notifi_status FROM hindi where status='$id' ORDER BY hindi.date desc, hindi.time desc"); 
 				
 				$i = 0;
 				?>
@@ -205,6 +205,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<th>Time</th>
 											<th>Edit</th>
 											<th>Delete</th>
+											<th>Notify</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -215,6 +216,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<th>Time</th>
 											<th >Edit</th>
 											<th >Delete</th>
+											<th>Notify</th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -253,7 +255,17 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<td width="100"><? echo $row['3']; ?></td>				<!-- Time containt-->
 						<td width="50"><a href="h_edit_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
 						<td width="50"><a href="h_delete_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/delete.jpg" height="30" width="60"/></a></td>
-						<td><a href="#" class="btn btn-primary btn-sm">Notify</a></td>
+						<?
+							if($row['5']==0){
+						?>
+						<td><a href="worker_news_notifications.php?m_id=<?= $id ;?>&id=<?= $news_id ;?>&lang=<?='2';?>&title=<?=$row['1'];?>&category=<?=$_GET["name"];?>" class="btn btn-primary btn-sm">Notify</a></td>
+						<?
+							}else{
+						?>
+							<td><a class="btn btn-success">Notified</a></td>
+						<?
+							}
+						?>
 						</tr>
 					<? }
 					else

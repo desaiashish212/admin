@@ -164,7 +164,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 		<?php
 							$id = $_GET["id"];
 				
-				$sql = mysqli_query($con,"SELECT marathi.id, marathi.title, marathi.news, marathi.time,marathi.date FROM marathi where status='$id' ORDER BY marathi.date desc, marathi.time desc"); 
+				$sql = mysqli_query($con,"SELECT marathi.id, marathi.title, marathi.news, marathi.time,marathi.date,marathi.notifi_status FROM marathi where status='$id' ORDER BY marathi.date desc, marathi.time desc"); 
 				
 				$i = 0;
 				?>
@@ -250,7 +250,17 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<td width="100"><? echo $row['3']; ?></td>				<!-- Time containt-->
 						<td width="50"><a href="m_edit_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
 						<td width="50"><a href="m_delete_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/delete.jpg" height="30" width="60"/></a></td>
-						<td><a href="#" class="btn btn-primary btn-sm">Notify</a></td>
+						<?
+							if($row['5']==0){
+						?>
+						<td><a href="worker_news_notifications.php?m_id=<?= $id ;?>&id=<?= $news_id ;?>&lang=<?='1';?>&title=<?=$row['1'];?>&category=<?=$_GET["name"];?>" class="btn btn-primary btn-sm">Notify</a></td>
+						<?
+							}else{
+						?>
+							<td><a class="btn btn-success">Notified</a></td>
+						<?
+							}
+						?>
 						</tr>
 					
 				<? 	 
@@ -295,4 +305,4 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
   	$_SESSION["ERROR"]="Invalid Access, Please Login Again";
 	header("Location:login.php");
   }
-?> 
+?>
