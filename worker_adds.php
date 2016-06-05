@@ -2,7 +2,7 @@
 if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 {
 include_once('connection.php');
-
+		$lang = $_POST['language'];	// Advertisement language 1 = mar, 2 = hin, 3 = eng
 	   if(isset($_FILES['file'])){
       $errors= array();
 echo      $file_name = $_FILES['file']['name'];
@@ -26,7 +26,7 @@ echo      $file_name = $_FILES['file']['name'];
         // echo "Success";
          $path = "banner/".$file_name;
          echo $path;
-         echo $res=mysqli_query($con,"insert into advertise (path,status) values ('$path',1)");
+         echo $res=mysqli_query($con,"insert into advertise (path,status,language) values ('$path',1,$lang)");
          
           if($res<=0)
 		   {

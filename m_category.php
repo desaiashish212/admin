@@ -41,15 +41,15 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 
 <body>
 	<div class="brand clearfix">
-		<a href="index.html" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
+		<a href="index.php" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			
 			<li class="ts-account">
 				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					
-					<li><a href="#">Logout</a></li>
+					<li><a href="change_password.php">Change password</a></li>
+					<li><a href="logout.php">Logout</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -58,12 +58,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-				<li class="ts-label">Search</li>
-				<li>
-					<input type="text" class="ts-sidebar-search" placeholder="Search here...">
-				</li>
-				<li class="ts-label">Main</li>
-								<?include_once ('connection.php');?>
+				<?include_once ('connection.php');?>
 				<li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li ><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
 					<ul>
@@ -148,8 +143,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
-				
-				</li>
+				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
+				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
 			
 
 				<!-- Account from above -->

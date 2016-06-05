@@ -10,7 +10,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Harmony - Free responsive Bootstrap admin template by Themestruck.com</title>
+	<title>Dhangar Mahasabha</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -54,20 +54,13 @@
 									<label for="" class="text-uppercase text-sm">Password</label>
 									<input type="password" id="password" name="password" placeholder="Password" class="form-control mb">
 
-									<div class="checkbox checkbox-circle checkbox-info">
-										<input id="checkbox7" type="checkbox" checked>
-										<label for="checkbox7">
-											Keep me signed in
-										</label>
-									</div>
-
 									<button class="btn btn-primary btn-block" name="submit" type="submit" value="Login">LOGIN</button>
 									 <?
 				if(isset($_SESSION["ERROR"]))
 				{
 			?>
 						<div class="text-center text-light">
-							<a href="#" class="text-light"><? echo $_SESSION["ERROR"]; ?></a>
+							<h4 style="color: red"><? echo $_SESSION["ERROR"]; ?></h4>
 						</div>
               <?
 					unset($_SESSION["ERROR"]);

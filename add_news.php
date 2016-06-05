@@ -41,14 +41,14 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 
 <body>
 	<div class="brand clearfix">
-		<a href="index.html" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
+		<a href="index.php" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			
 			<li class="ts-account">
 				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					
+						<li><a href="change_password.php">Change password</a></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>
 			</li>
@@ -58,12 +58,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-				<li class="ts-label">Search</li>
-				<li>
-					<input type="text" class="ts-sidebar-search" placeholder="Search here...">
-				</li>
-				<li class="ts-label">Main</li>
-								<?include_once ('connection.php');?>
+				<?include_once ('connection.php');?>
 				<li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li class="open"><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
 					<ul>
@@ -148,8 +143,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
-				
-				</li>
+				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
+				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
 			
 
 				<!-- Account from above -->
@@ -199,11 +194,16 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<textarea class="form-control" placeholder="enter news description here" name="news" id="news"  rows="10"></textarea>
 										</div>
 									</div>
-									
+									<div class="form-group">
+										<label class="col-sm-2 control-label">Date</label>
+										<div class="col-sm-10">
+											<input type="date" name="date" id="date"/>
+										</div>
+									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Select Image</label>
 										<div class="col-sm-10">
-											<input id="input-43" type="file" name="file" accept="image/*">
+											<input id="input-43" type="file" name="files[]" multiple accept="image/*">
 										</div>
 									</div>
 								

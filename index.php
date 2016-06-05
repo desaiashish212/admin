@@ -13,7 +13,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	
+	<!--Google graph chart js initialization-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<title>Dhangar Mahasabha</title>
 
 	<!-- Font awesome -->
@@ -42,13 +43,15 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 
 <body>
 	<div class="brand clearfix">
-		<a href="index.html" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
+		<a href="index.php" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			<li class="ts-account">
 				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
+					<li><a href="change_password.php">Change password</a></li>
 					<li><a href="logout.php">Logout</a></li>
+					
 				</ul>
 			</li>
 		</ul>
@@ -57,11 +60,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-				<li class="ts-label">Search</li>
-				<li>
-					<input type="text" class="ts-sidebar-search" placeholder="Search here...">
-				</li>
-				<li class="ts-label">Main</li>
+				
+			
 								<?include_once ('connection.php');?>
 				<li class="open"><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
@@ -147,7 +147,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
-				
+				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
+				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
 
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
@@ -178,44 +179,63 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 										<div class="panel panel-default">
 											<div class="panel-body bk-primary text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">24</div>
-													<div class="stat-panel-title text-uppercase">New Users</div>
+												<?
+													// Counting number of users in the system	
+													$count_users = mysqli_query($con,"SELECT COUNT(*) FROM users"); 
+													$row = mysqli_fetch_row($count_users);
+													$UserCount = $row[0];
+												
+												?>
+													<div class="stat-panel-number h1 "><?echo $UserCount;?></div>
+													<div class="stat-panel-title text-uppercase">All Users</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="panel panel-default">
 											<div class="panel-body bk-success text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">8</div>
-													<div class="stat-panel-title text-uppercase">Support Tickets</div>
+<?
+		$marathiCount = mysqli_query($con,"select COUNT(*) from users WHERE users.lang_status='1'");
+		$marathiRow = mysqli_fetch_row($marathiCount);										
+?>												
+													<div class="stat-panel-number h1 "><? echo $marathiRow[0];?></div>
+													<div class="stat-panel-title text-uppercase">Marathi Reader</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="panel panel-default">
 											<div class="panel-body bk-info text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">58</div>
-													<div class="stat-panel-title text-uppercase">New Orders</div>
+<?
+		$hindiCount = mysqli_query($con,"select COUNT(*) from users WHERE users.lang_status='2'");
+		$hindiRow = mysqli_fetch_row($hindiCount);										
+?>												
+													<div class="stat-panel-number h1 "><?echo $hindiRow[0]?></div>
+													<div class="stat-panel-title text-uppercase">Hindi Reader</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="panel panel-default">
 											<div class="panel-body bk-warning text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">18</div>
-													<div class="stat-panel-title text-uppercase">New Comments</div>
+<?
+		$englishCount = mysqli_query($con,"select COUNT(*) from users WHERE users.lang_status='3'");
+		$englishRow = mysqli_fetch_row($englishCount);										
+?>												
+													<div class="stat-panel-number h1 "><? echo $englishRow[0]?></div>
+													<div class="stat-panel-title text-uppercase">English Reader</div>
 												</div>
 											</div>
-											<a href="#" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="users.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -225,53 +245,135 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<div class="row">
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Sales Report</div>
+									<div class="panel-heading">Monthly New User</div>
 									<div class="panel-body">
 										<div class="chart">
-											<canvas id="dashReport" height="310" width="600"></canvas>
+										<!--Google graph chart-->
+											 <div id="chart_div"></div> 
 										</div>
+<?
+	// Query to draw graph
+	$graph = mysqli_query($con,"Select count(*) as counts, DATE_FORMAT(created_at, \"%Y-%m\") as \"_month\" 
+from users    
+group by _month
+order by _month 
+LIMIT 12");
+
+	$jsonArray = array();
+	while($graph_result = mysqli_fetch_row($graph))
+	{
+		$graphCount =  $graph_result[0];
+		$graphMonth =  $graph_result[1];
+		$jsonArray[] =  array($graphCount,$graphMonth);
+	}
+	
+?>	
+
+<script>
+	  var graphMonth = <?php echo json_encode($jsonArray[0][0]);?>;	
+	  var graphCount = <?php echo json_encode($jsonArray[0][1]);?>;	
+	  
+	  var graphMonth1 = <?php echo json_encode($jsonArray[1][0]);?>;	
+	  var graphCount1 = <?php echo json_encode($jsonArray[1][1]);?>;	
+	  
+	  var graphMonth2 = <?php echo json_encode($jsonArray[2][0]);?>;	
+	  var graphCount2 = <?php echo json_encode($jsonArray[2][1]);?>;	
+	  
+	  var graphMonth3 = <?php echo json_encode($jsonArray[3][0]);?>;	
+	  var graphCount3 = <?php echo json_encode($jsonArray[3][1]);?>;	
+	  
+	  var graphMonth4 = <?php echo json_encode($jsonArray[4][0]);?>;	
+	  var graphCount4 = <?php echo json_encode($jsonArray[4][1]);?>;	
+	  
+	  google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+      	
+        var data = google.visualization.arrayToDataTable([
+         ['months', 'users'],
+         [graphCount,graphMonth],
+         [graphCount1,graphMonth1],
+         [graphCount2,graphMonth2],
+         [graphCount3,graphMonth3],
+         [graphCount4,graphMonth4],
+         
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Report of Users added in a year',
+            subtitle: '2016',
+          },
+          bars: 'vertical',
+          vAxis: {format: 'decimal'},
+          height: 250,
+          colors: ['#1b9e77']
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        var btns = document.getElementById('btn-group');
+
+        btns.onclick = function (e) {
+
+          if (e.target.tagName === 'BUTTON') {
+            options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+          }
+        }
+      }
+</script>
+
+
 										<div id="legendDiv"></div>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Recent Oreders</div>
+									<div class="panel-heading">TODAYS BIRTDAYS</div>
 									<div class="panel-body">
-										<div class="alert alert-dismissible alert-success">
-											<button type="button" class="close" data-dismiss="alert"><i class="fa fa-close"></i></button>
-											<strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-										</div>
+									<?
+											// To display 5 latest users ...
+		$result = mysqli_query($con,"SELECT users.id, users.`name`, users.mobile_no, users.email from users WHERE DATE_FORMAT(users.birth,'%d-%m') = DATE_FORMAT(NOW(),'%d-%m') LIMIT 5");											
+										?>
 										<table class="table table-hover">
 											<thead>
 												<tr>
-													<th>#</th>
-													<th>First Name</th>
-													<th>Last Name</th>
-													<th>Username</th>
+													<td><td>
+													<th>Name</th>
+													<th>Mobile No.</th>
+													<th>Email ID</th>
+													<th>Wish</th>
 												</tr>
 											</thead>
 											<tbody>
+											<?
+												while($row = mysqli_fetch_array($result)){
+											?>
 												<tr>
-													<th scope="row">1</th>
-													<td>Mark</td>
-													<td>Otto</td>
-													<td>@mdo</td>
+													<th><th>
+													<?
+														//echo $row[0];
+														// this is user-id may need for further Query															// pass thi id to href below -->
+													?>
+													<td><?echo $row[1];?></td>
+													<td><?echo $row[2];?></td>
+													<td><?echo $row[3];?></td>
+													<td><a href="#" class="btn btn-primary btn-sm">Wish</a></td>
+													
 												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>Jacob</td>
-													<td>Thornton</td>
-													<td>@fat</td>
-												</tr>
-												<tr>
-													<th scope="row">3</th>
-													<td>Larry</td>
-													<td>the Bird</td>
-													<td>@twitter</td>
-												</tr>
+												<?
+													}
+												?>	
+										
 											</tbody>
+											
 										</table>
+										<a href="wish_bday.php">View all todays birthdays <i class="fa fa-fw"></i> </a>
 									</div>
 								</div>
 							</div>
@@ -285,9 +387,9 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 										<div class="row">
 											<div class="col-md-4">
 												<ul class="chart-dot-list">
-													<li class="a1">date 1</li>
-													<li class="a2">data 2</li>
-													<li class="a3">data 3</li>
+													<li class="a1">Marathi</li>
+													<li class="a2">Hindi</li>
+													<li class="a3">English</li>
 												</ul>
 											</div>
 											<div class="col-md-8">
@@ -306,9 +408,9 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 										<div class="row">
 											<div class="col-md-4">
 												<ul class="chart-dot-list">
-													<li class="a1">date 1</li>
-													<li class="a2">data 2</li>
-													<li class="a3">data 3</li>
+													<li class="a1">Marathi</li>
+													<li class="a2">Hindi</li>
+													<li class="a3">English</li>
 												</ul>
 											</div>
 											<div class="col-md-8">
@@ -340,29 +442,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
 	
-	<script>
-		
-	window.onload = function(){
-    
-		// Line chart from swirlData for dashReport
-		var ctx = document.getElementById("dashReport").getContext("2d");
-		window.myLine = new Chart(ctx).Line(swirlData, {
-			responsive: true,
-			scaleShowVerticalLines: false,
-			scaleBeginAtZero : true,
-			multiTooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
-		}); 
-		
-		// Pie Chart from doughutData
-		var doctx = document.getElementById("chart-area3").getContext("2d");
-		window.myDoughnut = new Chart(doctx).Pie(doughnutData, {responsive : true});
-
-		// Dougnut Chart from doughnutData
-		var doctx = document.getElementById("chart-area4").getContext("2d");
-		window.myDoughnut = new Chart(doctx).Doughnut(doughnutData, {responsive : true});
-
-	}
-	</script>
+	
 
 </body>
 
