@@ -191,7 +191,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
 						
-							<div class="panel-heading">Table by DataTables plugin</div>
+							<div class="panel-heading">Marathi categories</div>
 						
 												
 													
@@ -228,7 +228,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- news containt-->
 					
 					
-						<td ><a href="m_delete_category.php?id=<?= $row["id"]?> "><img src="img/delete.jpg" height="30" width="60"/></a></td>
+						<td ><a href="m_delete_category.php?id=<?= $row["id"]?> "><img src="img/delete.jpg" height="30" width="60"/></a>
+						<a href="m_update_category.php?id=<?= $row["id"]?> "><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
 						</tr>
 					
 				<?  
