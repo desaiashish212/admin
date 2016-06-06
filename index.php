@@ -337,7 +337,7 @@ LIMIT 12");
 									<div class="panel-heading">TODAYS BIRTDAYS</div>
 									<div class="panel-body">
 									<?
-											// To display 5 latest users ...
+											// To display 5 latest users Birthdays...
 		$result = mysqli_query($con,"SELECT users.id, users.`name`, users.mobile_no, users.email, users.lang_status from users WHERE DATE_FORMAT(users.birth,'%d-%m') = DATE_FORMAT(NOW(),'%d-%m') LIMIT 5");											
 										?>
 										<table class="table table-hover">
@@ -347,7 +347,7 @@ LIMIT 12");
 													<th>Name</th>
 													<th>Mobile No.</th>
 													<th>Email ID</th>
-													<th>Wish</th>
+													
 												</tr>
 											</thead>
 											<tbody>
@@ -363,8 +363,6 @@ LIMIT 12");
 													<td><?echo $row[1];?></td>
 													<td><?echo $row[2];?></td>
 													<td><?echo $row[3];?></td>
-													<td><a href="worker_birth_notifications.php?id=<?=$row[0];?>&lang=<?=$row[4];?>" class="btn btn-primary btn-sm">Wish</a></td>
-													
 												</tr>
 												<?
 													}
@@ -382,42 +380,116 @@ LIMIT 12");
 						<div class="row">
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Pie Chart</div>
+									<div class="panel-heading">Latest Users</div>
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-md-4">
-												<ul class="chart-dot-list">
-													<li class="a1">Marathi</li>
-													<li class="a2">Hindi</li>
-													<li class="a3">English</li>
-												</ul>
-											</div>
-											<div class="col-md-8">
-												<div class="chart chart-doughnut">
-													<canvas id="chart-area3" width="1200" height="900" />
-												</div>
-											</div>
+									<div class="panel-body">
+									<?
+											// To display 5 latest users ...
+		$result = mysqli_query($con,"SELECT
+users.`name`,
+users.mobile_no,
+users.email
+FROM
+users
+ORDER BY
+users.created_at DESC
+LIMIT 7
+");											
+										?>
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<td><td>
+													<th>Name</th>
+													<th>Mobile No.</th>
+													<th>Email ID</th>
+													
+												</tr>
+											</thead>
+											<tbody>
+											<?
+												while($row = mysqli_fetch_array($result)){
+											?>
+												<tr>
+													<th><th>
+													<td><?echo $row[0];?></td>
+													<td><?echo $row[1];?></td>
+													<td><?echo $row[2];?></td>
+												</tr>
+												<?
+													}
+												?>	
+										
+											</tbody>
+											
+										</table>
+										<a href="users.php">View all users <i class="fa fa-fw"></i> </a>
+								
+								</div>
+											
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Doughnut</div>
+									<div class="panel-heading">Send Flash Message to app</div>
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-md-4">
-												<ul class="chart-dot-list">
-													<li class="a1">Marathi</li>
-													<li class="a2">Hindi</li>
-													<li class="a3">English</li>
-												</ul>
-											</div>
-											<div class="col-md-8">
-												<div class="chart chart-doughnut">
-													<canvas id="chart-area4" width="1200" height="900" />
-												</div>
-											</div>
+<?if(isset($_SESSION["FLASH_SUCC"]))
+{
+?>
+						<div class="text-center text-light">
+							<h4 style="color: red"><? echo $_SESSION["FLASH_SUCC"]; ?></h4>
+						</div>
+<?
+					unset($_SESSION["FLASH_SUCC"]);
+}
+?>
+<?
+// Language wise flash text
+	
+$result = mysqli_query($con,"SELECT
+flash.flashMarathi,
+flash.flashHindi,
+flash.flashEnglish
+FROM
+flash
+");											
+				$row = mysqli_fetch_array($result);													
+?>
+										
+<!--Send flash message MARATHI-->										
+<form class="form-horizontal" method="post" action="flash.php?lang=mar">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Marathi</label>
+			<div class="col-sm-8">
+				<input type="text" placeholder="Enter flash message here" name="flash_text" id="flash_text" class="form-control mb" value="<?echo $row[0];?>">
+				<button class="btn btn-warning" type="submit">Update Marathi Flash Message</button>
+			</div>
+	</div>
+</form>
+<!--Send flash message HINDI-->										
+<form class="form-horizontal" method="post" action="flash.php?lang=hin">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Hindi</label>
+			<div class="col-sm-8">
+				<input type="text" placeholder="Enter flash message here" name="flash_text" id="flash_text" class="form-control mb"  value="<?echo $row[1];?>">
+				<button class="btn btn-primary" type="submit">Update Hindi Flash Message </button>
+			</div>
+	</div>
+</form>
+<!--Send flash message ENGLISH-->										
+<form class="form-horizontal" method="post" action="flash.php?lang=eng">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">English</label>
+			<div class="col-sm-8">
+				<input type="text" placeholder="Enter flash message here" name="flash_text" id="flash_text" class="form-control mb" value="<?echo $row[2];?>">
+				<button class="btn btn-success" type="submit">Update English Flash Message</button>
+			</div>
+	</div>
+</form>
 										</div>
 									</div>
 								</div>
