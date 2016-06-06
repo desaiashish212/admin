@@ -179,10 +179,12 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Select Advertise Language</label>
 										<div class="col-sm-10">
-											<select name="language">
+											<select name="language" class="selectpicker">
+											<optgroup label="Select Language">
 												<option value="1"> Marathi</option>
 												<option value="2"> Hindi</option>
 												<option value="3"> English</option>
+											</optgroup>	
 											</select>
 										</div>
 									</div>
