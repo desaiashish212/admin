@@ -4,6 +4,7 @@
 	$id=$_GET["id"];
 	$title=$_GET["title"];
 	$languages=$_GET["lang"];
+	$status =$_GET['status'];
 	$category=$_GET["category"];
 	$table='';
 	//$res=mysql_query("insert into category (caregory_name,lang_status) values ('$name','$lang')");
@@ -32,7 +33,7 @@
     $pushMessage = $_GET['title'];
     if(isset($gcmRegIds) && isset($pushMessage)) {
 
-        $message = array('message' => $pushMessage);
+        $message = array('message' => $pushMessage,'id'=>$id,'status'=>$status);
         $pushStatus = sendPushNotification($gcmRegIds, $message);
 	
 		if($pushStatus>0){

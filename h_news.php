@@ -258,7 +258,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<?
 							if($row['5']==0){
 						?>
-						<td><a href="worker_news_notifications.php?m_id=<?= $id ;?>&id=<?= $news_id ;?>&lang=<?='2';?>&title=<?=$row['1'];?>&category=<?=$_GET["name"];?>" class="btn btn-primary btn-sm">Notify</a></td>
+						<td><a href="worker_news_notifications.php?m_id=<?= $id ;?>&id=<?= $news_id ;?>&lang=<?='2';?>&title=<?=$row['1'];?>&category=<?=$_GET["name"];?>&status=<?=$_GET['id'];?>" class="btn btn-primary btn-sm">Notify</a></td>
 						<?
 							}else{
 						?>
