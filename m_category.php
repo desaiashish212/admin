@@ -170,7 +170,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<h2 class="page-title">Marathi Category</h2>
 							<?php
 				include_once ('connection.php');
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name,category.created_at  FROM category where lang_status=1"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name,category.created_at,category.priority  FROM category where lang_status=1 ORDER BY priority ASC"); 
 				
 				$i = 0;
 				?>
@@ -198,17 +198,18 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											
 											
 							<div class="panel-body">
-								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+								<table id="abs" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
+											<th>Priority</th>
 											<th>Category</th>
 											<th>Created at</th>
-								
 											<th >Delete</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
+											<th>Priority</th>
 											<th>Category</th>
 											<th>Created at</th>
 											<th >Delete</th>
@@ -223,6 +224,11 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					?>
 					
 						<tr align="left"> 
+						<td > <? echo $row['3']; ?><!-- Priority-->
+							<a href="priority_up.php?pr=<? echo $row['3']; ?> & lang=1">UP</a>
+							<a href="priority_down.php?pr=<? echo $row['3']; ?> & lang=1">DOWN</a>
+							
+						</td>
 						<td > <? echo $row['1']; ?></td>	<!-- Title containt-->
 						<td > <? echo $row['2']; ?></td>	
 						<!-- news containt-->
