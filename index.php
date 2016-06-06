@@ -394,7 +394,7 @@ FROM
 users
 ORDER BY
 users.created_at DESC
-LIMIT 7
+LIMIT 8
 ");											
 										?>
 										<table class="table table-hover">
