@@ -63,7 +63,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li ><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
 					<ul>
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1 and status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -87,7 +87,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li><a href="#"><i class="fa fa-desktop"></i>Hindi</a>
 					<ul>
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2 and status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -112,7 +112,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					<ul>
 					
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=3"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=3 and status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -170,7 +170,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<h2 class="page-title">Marathi Category</h2>
 							<?php
 				include_once ('connection.php');
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name,category.created_at,category.priority  FROM category where lang_status=1 ORDER BY priority ASC"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name,category.created_at,category.priority,category.status  FROM category where lang_status=1 ORDER BY priority ASC"); 
 				
 				$i = 0;
 				?>
@@ -226,6 +226,33 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					?>
 					
 						<tr align="left"> 
+						<?
+						if($row['4']==0){
+						
+						// status = 1
+						?>
+							<td style="color:red" > <? echo $row['3']; ?><!-- Priority--></td>
+							
+						<td>	<a href="priority_up.php?pr=<? echo $row['3']; ?> & lang=1" class="fa fa-chevron-circle-up" style="font-size:36px;color: #3e454c"></a>
+							<a href="priority_down.php?pr=<? echo $row['3']; ?> & lang=1" class="fa fa-chevron-circle-down" style="font-size:36px;color: #2c3136"></a>
+						</td>	
+						
+						<td style="color:red" > <? echo $row['1']; ?></td>	<!-- Title containt-->
+						<td style="color:red" > <? echo $row['2']; ?></td>	
+						<!-- news containt-->
+					
+					
+						<td ><a href="categoryEnable.php?id=<? echo $row['0']; ?>&lang=1"><img src="img/enable.jpg" height="30" width="60"/></a>
+						<a href="m_update_category.php?id=<?= $row["id"]?> "><img src="img/button_edit.JPG" height="30" width="60"/></a>
+						
+						
+						<?
+						//
+						}else{
+							// status = 1
+						
+						?>	
+					
 						<td > <? echo $row['3']; ?><!-- Priority--></td>
 							
 						<td>	<a href="priority_up.php?pr=<? echo $row['3']; ?> & lang=1" class="fa fa-chevron-circle-up" style="font-size:36px;color: #3e454c"></a>
@@ -237,8 +264,12 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- news containt-->
 					
 					
-						<td ><a href="m_delete_category.php?id=<?= $row["id"]?> "><img src="img/delete.jpg" height="30" width="60"/></a>
+						<td ><a href="m_delete_category.php?id=<?= $row["id"]?> "><img src="img/desable.jpg" height="30" width="60"/></a>
 						<a href="m_update_category.php?id=<?= $row["id"]?> "><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
+						
+						<?
+							}//Eof else if status = 1
+						?>
 						</tr>
 					
 				<?  
