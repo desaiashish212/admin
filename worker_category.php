@@ -4,9 +4,13 @@
 	$lang=$_POST["status"];
 	$name=$_POST["name"];
 	
-	//$res=mysql_query("insert into category (caregory_name,lang_status) values ('$name','$lang')");
-	$sql = "insert into category (caregory_name,lang_status) values ('$name','$lang')";
-	//$aff=mysql_affected_rows();
+	$sql = "SELECT COUNT(*) FROM category WHERE category.lang_status='$lang'";
+	$result=mysqli_query($con,$sql);
+	$row = mysqli_fetch_row($result);
+	$max = $row['0']+1;
+	
+	$sql = "insert into category (caregory_name,lang_status,priority) values ('$name','$lang','$max')";
+	
 	$result = mysqli_query($con, $sql);
 	
 	if($sql)

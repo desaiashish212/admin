@@ -270,6 +270,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/priorityChanger"></script>
 
 </body>
 
