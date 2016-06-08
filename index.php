@@ -64,7 +64,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 			
 								<?include_once ('connection.php');?>
 				<li class="open"><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
+				<li><a href="#"><i class="fa fa-medium"></i>Marathi</a>
 					<ul>
 						<?php
 				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1 and status = 1 order by priority ASC"); 
@@ -88,7 +88,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				?>
 					</ul>
 				</li>
-				<li><a href="#"><i class="fa fa-desktop"></i>Hindi</a>
+				<li><a href="#"><i class="fa fa-h-square"></i>Hindi</a>
 					<ul>
 						<?php
 				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2 and status = 1   order by priority ASC"); 
@@ -112,7 +112,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				?>
 					</ul>
 				</li>
-				<li><a href="#"><i class="fa fa-desktop"></i>English</a>
+				<li><a href="#"><i class="fa fa-globe" aria-hidden="false"></i>English</a>
 					<ul>
 					
 						<?php
@@ -138,7 +138,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				
-				<li><a href="#"><i class="fa fa-desktop"></i>Category</a>
+				<li><a href="#"><i class="fa fa-th-large"></i>Category</a>
 					<ul>
 						<li><a href="m_category.php">Marathi</a></li>
 						<li><a href="h_category.php">Hindi</a></li>
@@ -146,9 +146,11 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					
 					</ul>
 				</li>
-				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
-				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
-				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
+				<li><a href="users.php"><i class="fa fa-users"></i> Users</a></li>
+				<li ><a href="advertise.php" ><i class="fa fa-briefcase"></i> Advertise</a></li>
+				<li><a href="notifications.php"><i class="fa fa-bell"></i> Notifications</a></li>
+				<li><a href="feedback.php"><i class="fa fa-envelope"></i> Feedbacks</a></li>
+				
 
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
@@ -285,6 +287,28 @@ LIMIT 12");
 	  var graphMonth4 = <?php echo json_encode($jsonArray[4][0]);?>;	
 	  var graphCount4 = <?php echo json_encode($jsonArray[4][1]);?>;	
 	  
+	  /*
+	  var graphMonth5 = <?php echo json_encode($jsonArray[5][0]);?>;	
+	  var graphCount5 = <?php echo json_encode($jsonArray[5][1]);?>;	
+	  
+	  var graphMonth6 = <?php echo json_encode($jsonArray[6][0]);?>;	
+	  var graphCount6 = <?php echo json_encode($jsonArray[6][1]);?>;	
+	  
+	  var graphMonth7 = <?php echo json_encode($jsonArray[7][0]);?>;	
+	  var graphCount7 = <?php echo json_encode($jsonArray[7][1]);?>;	
+	  
+	  var graphMonth8 = <?php echo json_encode($jsonArray[8][0]);?>;	
+	  var graphCount8 = <?php echo json_encode($jsonArray[8][1]);?>;	
+	  
+	  var graphMonth9 = <?php echo json_encode($jsonArray[9][0]);?>;	
+	  var graphCount9 = <?php echo json_encode($jsonArray[9][1]);?>;	
+	  
+	  var graphMonth10 = <?php echo json_encode($jsonArray[10][0]);?>;	
+	  var graphCount10 = <?php echo json_encode($jsonArray[10][1]);?>;	
+	  
+	  var graphMonth11 = <?php echo json_encode($jsonArray[11][0]);?>;	
+	  var graphCount11 = <?php echo json_encode($jsonArray[11][1]);?>;
+	  */
 	  google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -297,7 +321,14 @@ LIMIT 12");
          [graphCount2,graphMonth2],
          [graphCount3,graphMonth3],
          [graphCount4,graphMonth4],
-         
+        /* [graphCount5,graphMonth5],
+         [graphCount6,graphMonth6],
+         [graphCount7,graphMonth7],
+         [graphCount8,graphMonth8],
+         [graphCount9,graphMonth9],
+         [graphCount10,graphMonth10],
+         [graphCount11,graphMonth11],
+         */
         ]);
 
         var options = {

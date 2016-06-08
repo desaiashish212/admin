@@ -55,7 +55,7 @@
 									<input type="password" id="password" name="password" placeholder="Password" class="form-control mb">
 
 									<button class="btn btn-primary btn-block" name="submit" type="submit" value="Login">LOGIN</button>
-									 <?
+			<?
 				if(isset($_SESSION["ERROR"]))
 				{
 			?>
@@ -70,7 +70,31 @@
 							</div>
 						</div>
 						<div class="text-center text-light">
-							<a href="#" class="text-light">Forgot password?</a>
+							
+							
+							 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+								<a href="#" class="text-light">Forgot password?</a>
+  							</button>
+
+										<!-- Modal -->
+										<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+														<h4 class="modal-title" id="myModalLabel" style="color: #ff0000">Opps! you forgot?</h4>
+													</div>
+													<div class="modal-body" style="color: green;">
+													 	Ok, No problem contact to UIT grpup and they help you shortly
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													</div>
+												</div>
+											</div>
+										</div>
+							 
+							 
 						</div>
 					</div>
 				</div>

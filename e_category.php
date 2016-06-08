@@ -60,7 +60,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 			<ul class="ts-sidebar-menu">
 				<?include_once ('connection.php');?>
 				<li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-				<li ><a href="#"><i class="fa fa-desktop"></i>Marathi</a>
+				<li ><a href="#"><i class="fa fa-medium"></i>Marathi</a>
 					<ul>
 						<?php
 				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1 and status = 1 order by priority ASC"); 
@@ -84,7 +84,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				?>
 					</ul>
 				</li>
-				<li><a href="#"><i class="fa fa-desktop"></i>Hindi</a>
+				<li><a href="#"><i class="fa fa-h-square"></i>Hindi</a>
 					<ul>
 						<?php
 				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2 and status = 1 order by priority ASC"); 
@@ -108,7 +108,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				?>
 					</ul>
 				</li>
-				<li><a href="#"><i class="fa fa-desktop"></i>English</a>
+				<li><a href="#"><i class="fa fa-globe"></i>English</a>
 					<ul>
 					
 						<?php
@@ -134,7 +134,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					</ul>
 				</li>
 				
-				<li class="open"><a href="#"><i class="fa fa-desktop"></i>Category</a>
+				<li class="open"><a href="#"><i class="fa fa-th-large"></i>Category</a>
 					<ul>
 						<li><a href="m_category.php">Marathi</a></li>
 						<li><a href="h_category.php">Hindi</a></li>
@@ -142,11 +142,11 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					
 					</ul>
 				</li>
-				<li><a href="users.php"><i class="fa fa-pie-chart"></i> Users</a></li>
-				<li ><a href="advertise.php" ><i class="fa fa-pie-chart"></i> Advertise</a></li>
-				<li><a href="notifications.php"><i class="fa fa-pie-chart"></i> Notifications</a></li>
-			
-
+				<li><a href="users.php"><i class="fa fa-users"></i> Users</a></li>
+				<li ><a href="advertise.php" ><i class="fa fa-briefcase"></i> Advertise</a></li>
+				<li><a href="notifications.php"><i class="fa fa-bell"></i> Notifications</a></li>
+				<li><a href="feedback.php"><i class="fa fa-envelope"></i> Feedbacks</a></li>
+	
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
 					

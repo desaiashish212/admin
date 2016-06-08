@@ -142,10 +142,10 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					
 					</ul>
 				</li>
-				<li class="open"><a href="users.php"><i class="fa fa-users"></i> Users</a></li>
+				<li><a href="users.php"><i class="fa fa-users"></i> Users</a></li>
 				<li ><a href="advertise.php" ><i class="fa fa-briefcase"></i> Advertise</a></li>
 				<li><a href="notifications.php"><i class="fa fa-bell"></i> Notifications</a></li>
-				<li><a href="feedback.php"><i class="fa fa-envelope"></i> Feedbacks</a></li>
+				<li class="open"><a href="feedback.php"><i class="fa fa-envelope"></i> Feedbacks</a></li>
 
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
@@ -169,10 +169,10 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<div class="row">
 					<div class="col-md-12">
 
-						<h2 class="page-title">Users</h2>
+						<h2 class="page-title">Feedbacks</h2>
 							<?php
 				include_once ('connection.php');
-				$sql = mysqli_query($con,"SELECT users.name,users.mobile_no,users.state,users.district,users.email,users.birth,users.city,users.pincode,users.occupation,users.created_at FROM users"); 
+				$sql = mysqli_query($con,"SELECT * from feedback ORDER BY create_at DESC;"); 
 				
 				$i = 0;
 				
@@ -192,33 +192,28 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
 						
-							<div class="panel-heading">Table by DataTables plugin</div>
+							<div class="panel-heading">Feedbacks from users</div>
 						
 												
 													
 											
 											
 							<div class="panel-body">
-								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+								<table id="abs" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
 											<th>Name</th>
-											<th>Mobile Number at</th>
-											<th >Email</th>
-											<th >Date of Birth</th>
-											<th >State</th>
-											<th >District</th>
-											<th >City</th>
-											<th >Pincode</th>
-											<th >Occupation</th>
-											<th >Created_at</th>
+											<th>Mobile Number</th>
+											<th >Feedback</th>
+											<th >Created at</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Category</th>
-											<th>Created at</th>
-											<th >Delete</th>
+											<th>Name</th>
+											<th>Mobile Number</th>
+											<th >Feedback</th>
+											<th >Created at</th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -230,20 +225,10 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					?>
 					
 						<tr align="left"> 
-						<td > <? echo $row['0']; ?></td>	<!-- Title containt-->
-						<td > <? echo $row['1']; ?></td>	
-						<td > <? echo $row['4']; ?></td>	
-						<td > <? echo $row['5']; ?></td>	
-						<td > <? echo $row['2']; ?></td>	
-						
-						<td > <? echo $row['3']; ?></td>	
-						
-						
-						<td > <? echo $row['6']; ?></td>	
-						<td > <? echo $row['7']; ?></td>	
-						<td > <? echo $row['8']; ?></td>	
-						<td > <? echo $row['9']; ?></td>	
-			
+							<td > <? echo $row['1']; ?></td>	<!-- Title containt-->
+							<td > <? echo $row['2']; ?></td>	
+							<td > <? echo $row['3']; ?></td>	
+							<td > <? echo $row['4']; ?></td>	
 						</tr>
 					
 				<?  
