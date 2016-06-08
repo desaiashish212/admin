@@ -30,6 +30,7 @@ if (isset($_POST['status'])) {
         $news["time"] = $row["time"];
 		$news["date"] = $row["date"];
 		$news["path"] = $row["path"];
+		$news["path1"] = $row["path2"];
 
 		array_push($response["news"], $news);
     }
