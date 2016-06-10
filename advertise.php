@@ -14,7 +14,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	<meta name="theme-color" content="#3e454c">
 	
 	<title>Dhangar Mahasabha</title>
-
+t
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<!-- Sandstone Bootstrap CSS -->
@@ -191,7 +191,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
 						
-							<div class="panel-heading">Table by DataTables plugin</div>
+							<div class="panel-heading">Advertisements</div>
 						
 												
 													
