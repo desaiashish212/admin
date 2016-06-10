@@ -22,17 +22,23 @@ if (mysqli_num_rows($result) > 0) {
 
 		array_push($response["Category"], $category);
     }
-	if(strcmp($language,"ma")==0){
+	 if(strcmp($language,"ma")==0){
 		$result = mysqli_query($con,"SELECT flashMarathi FROM flash") or die(mysql_error());
 	}else if(strcmp($language,"hi")==0){
-		$result = mysqli_query($con,"SELECT flashMarathi FROM flash") or die(mysql_error());
+		$result = mysqli_query($con,"SELECT flashHindi FROM flash") or die(mysql_error());
 	}else if(strcmp($language,"en")==0){
-		$result = mysqli_query($con,"SELECT flashMarathi FROM flash") or die(mysql_error());
+		$result = mysqli_query($con,"SELECT flashEnglish FROM flash") or die(mysql_error());
 	}
-	$result = mysqli_query($con,"SELECT flashMarathi FROM flash") or die(mysql_error());
+	//$result = mysqli_query($con,"SELECT flashMarathi FROM flash") or die(mysql_error());
 	if (mysqli_num_rows($result) > 0) {
 		while ($row = mysqli_fetch_array($result)) {
-        $response["flash"] = $row['flashMarathi'];
+		if(strcmp($language,"ma")==0){
+		$response["flash"] = $row['flashMarathi'];
+	}else if(strcmp($language,"hi")==0){
+		$response["flash"] = $row['flashHindi'];
+	}else if(strcmp($language,"en")==0){
+		$response["flash"] = $row['flashEnglish'];
+	}
 		}
 		
 	}else{
