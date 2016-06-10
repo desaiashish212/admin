@@ -18,6 +18,7 @@ if (mysqli_num_rows($result) > 0) {
         $category["id"] = $row["id"];
         $category["name"] = $row["caregory_name"];
         $category["lang"] = $row["lang_status"];
+		$category["priority"] = $row["priority"];
 
 		array_push($response["Category"], $category);
     }
