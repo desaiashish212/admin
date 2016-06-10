@@ -196,7 +196,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<div class="panel panel-default">
 							<div class="panel-heading">Hindi News</div>
 							<div class="panel-body">
-								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+								<table id="abs" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 																		<thead>
 										<tr>
 											<th>Title</th>
@@ -262,7 +262,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<?
 							}else{
 						?>
-							<td><a class="btn btn-success">Notified</a></td>
+							<td><a class="btn btn-success btn-sm">Notified</a></td>
 						<?
 							}
 						?>
@@ -301,7 +301,17 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<td><? echo $row['3']; ?></td>
 						<td width="50"><a href="h_edit_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
 						<td width="50"><a href="h_delete_news.php?m_id=<?= $id ;?>&id=<?=$news_id;?>&category=<?=$_GET["name"];?>"><img src="img/delete.jpg" height="30" width="60"/></a></td>
-						<td><a href="#" class="btn btn-primary btn-sm">Notify</a></td>
+						<?
+							if($row['5']==0){
+						?>
+						<td><a href="worker_news_notifications.php?m_id=<?= $id ;?>&id=<?= $news_id ;?>&lang=<?='2';?>&title=<?=$row['1'];?>&category=<?=$_GET["name"];?>&status=<?=$_GET['id'];?>" class="btn btn-primary btn-sm">Notify</a></td>
+						<?
+							}else{
+						?>
+							<td><a class="btn btn-success btn-sm">Notified</a></td>
+						<?
+							}
+						?>
 						</tr>					
 				<? 	} 
 					$i++;					

@@ -15,7 +15,7 @@ include_once('connection.php');
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Harmony - Free responsive Bootstrap admin template by Themestruck.com</title>
+	<title>Dhangar Mahasabha</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -218,7 +218,6 @@ include_once('connection.php');
 									<div class="hr-dashed"></div>
 									<div class="form-group">
 										<div class="col-sm-8 col-sm-offset-2">
-											<button class="btn btn-default" type="submit">Cancel</button>
 											<button class="btn btn-primary" type="submit" value="submit">Save news</button>
 										</div>
 									</div>

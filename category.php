@@ -213,7 +213,6 @@ function validate(thisform)
 											<div class="hr-dashed"></div>
 											<div class="form-group">
 												<div class="col-sm-8 col-sm-offset-2">
-													<button class="btn btn-default" type="submit">Cancel</button>
 													<button class="btn btn-primary" type="submit">Add Category</button>
 												</div>
 											</div>

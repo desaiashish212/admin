@@ -49,7 +49,7 @@
 						$res=mysqli_query($con,"update marathi SET path2='$path' WHERE marathi.title='$title'");					
 					}
 					
-					   	$_SESSION["MSG"]="News not added, Try Again";
+					   	$_SESSION["MSG"]="News added successfully.";
 						header("Location: m_news.php?id=".$status."&name=".$category);	
 				     
 	            }else{
