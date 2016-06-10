@@ -64,7 +64,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li class="open"><a href="#"><i class="fa fa-medium"></i>Marathi</a>
 					<ul>
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1 and status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -88,7 +88,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li><a href="#"><i class="fa fa-h-square"></i>Hindi</a>
 					<ul>
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2 and status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -113,7 +113,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					<ul>
 					
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=3"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=3 and  status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -194,7 +194,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<div class="panel panel-default">
 							<div class="panel-heading">Marathi News</div>
 							<div class="panel-body">
-								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+								<table id="abs" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
 											<th>Title</th>
@@ -258,7 +258,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<?
 							}else{
 						?>
-							<td><a class="btn btn-success">Notified</a></td>
+							<td><a class="btn btn-success btn-sm">Notified</a></td>
 						<?
 							}
 						?>

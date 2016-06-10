@@ -72,7 +72,7 @@
 							</div>
 						</div>
 						<div class="text-center text-light">
-							<a href="#" class="text-light">Forgot password?</a>
+							
 						</div>
 					</div>
 				</div>

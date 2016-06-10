@@ -46,7 +46,7 @@
 		{
 		
 
-		$_SESSION["MSG"]="Notification sended successfully";
+		$_SESSION["MSG"]="Notification sent successfully";
 					if($languages==1){
 							header("Location: m_news.php?id=$m_id&name=$category");	
 				}else if($languages==2){

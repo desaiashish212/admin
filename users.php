@@ -63,7 +63,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li ><a href="#"><i class="fa fa-medium"></i>Marathi</a>
 					<ul>
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=1 and  status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -87,7 +87,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li><a href="#"><i class="fa fa-h-square"></i>Hindi</a>
 					<ul>
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2 and  status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -112,7 +112,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					<ul>
 					
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=3"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=3 and  status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -192,7 +192,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
 						
-							<div class="panel-heading">Table by DataTables plugin</div>
+							<div class="panel-heading">Users registered with Dhanagar Mahasabha</div>
 						
 												
 													

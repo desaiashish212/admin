@@ -91,7 +91,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li><a href="#"><i class="fa fa-h-square"></i>Hindi</a>
 					<ul>
 						<?php
-				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2 and status = 1   order by priority ASC"); 
+				$sql = mysqli_query($con,"SELECT category.id, category.caregory_name  FROM category where lang_status=2 and status = 1 order by priority ASC"); 
 				
 				$i = 0;
 				
@@ -247,7 +247,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<div class="row">
 							<div class="col-md-6">
 								<div class="panel panel-default">
-									<div class="panel-heading">Monthly New User</div>
+									<div class="panel-heading">Monthly New Users</div>
 									<div class="panel-body">
 										<div class="chart">
 										<!--Google graph chart-->

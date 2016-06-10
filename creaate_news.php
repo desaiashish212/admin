@@ -13,7 +13,8 @@
 			 $root_folder = $root_folder.$date.'/';
 			 echo $root_folder;
 			 chdir($date);
-			 //exit();
+			 echo "here";
+			 exit();
 			 $errors= array();
 			  $count=0;
 			  
