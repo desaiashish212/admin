@@ -180,7 +180,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 										<label class="col-sm-2 control-label">News Title</label>
 										<div class="col-sm-10">
 											
-											<input type="text" placeholder="enter news title here" name="title" id="title" class="form-control mb">
+											<input type="text" placeholder="enter news title here" name="title" id="title" class="form-control mb" required>
 											
 										</div>
 									</div>
@@ -191,13 +191,13 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 									<div class="form-group">
 										<label class="col-sm-2 control-label">News Description</label>
 										<div class="col-sm-10">
-											<textarea class="form-control" placeholder="enter news description here" name="news" id="news"  rows="10"></textarea>
+											<textarea class="form-control" placeholder="enter news description here" name="news" id="news"  rows="10" required></textarea>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Date</label>
 										<div class="col-sm-10">
-											<input type="date" name="date" id="date"/>
+											<input type="date" name="date" id="date" required/>
 										</div>
 									</div>
 									<div class="form-group">

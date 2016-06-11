@@ -206,7 +206,7 @@ function validate(thisform)
 											<div class="form-group">
 												<label class="col-sm-2 control-label">Category</label>
 												<div class="col-sm-10">
-													<input type="text" value="" name="name" id="name" class="form-control">
+													<input type="text" value="" name="name" id="name" class="form-control" required>
 													 <input type="hidden" name="status" value="<?= $status ?>">
 												</div>
 											</div>

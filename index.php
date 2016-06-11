@@ -526,7 +526,77 @@ flash
 								</div>
 							</div>
 						</div>
-
+			<!--
+				#################################################################
+			-->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-3">
+										<div class="panel panel-default">
+											<div class="panel-body bk-primary text-light">
+												<div class="stat-panel text-center">
+												<?
+													// Counting number of users in the system	
+													$count_users = mysqli_query($con,"SELECT (SELECT COUNT(*)FROM marathi)+(SELECT COUNT(*)from hindi)+(SELECT COUNT(*)from eng) as totalnews"); 
+													$row = mysqli_fetch_row($count_users);
+													$UserCount = $row[0];
+												
+												?>
+													<div class="stat-panel-number h1 "><?echo $UserCount;?></div>
+													<div class="stat-panel-title text-uppercase">Total news</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="panel panel-default">
+											<div class="panel-body bk-success text-light">
+												<div class="stat-panel text-center">
+<?
+		$marathiCount = mysqli_query($con,"SELECT COUNT(*) from marathi");
+		$marathiRow = mysqli_fetch_row($marathiCount);										
+?>												
+													<div class="stat-panel-number h1 "><? echo $marathiRow[0];?></div>
+													<div class="stat-panel-title text-uppercase">Marathi News</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="panel panel-default">
+											<div class="panel-body bk-info text-light">
+												<div class="stat-panel text-center">
+<?
+		$hindiCount = mysqli_query($con,"SELECT COUNT(*) from hindi");
+		$hindiRow = mysqli_fetch_row($hindiCount);										
+?>												
+													<div class="stat-panel-number h1 "><?echo $hindiRow[0]?></div>
+													<div class="stat-panel-title text-uppercase">Hindi News</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="panel panel-default">
+											<div class="panel-body bk-warning text-light">
+												<div class="stat-panel text-center">
+<?
+		$englishCount = mysqli_query($con,"SELECT COUNT(*) from eng");
+		$englishRow = mysqli_fetch_row($englishCount);										
+?>												
+													<div class="stat-panel-number h1 "><? echo $englishRow[0]?></div>
+													<div class="stat-panel-title text-uppercase">English news</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+			<!--
+				#################################################################
+			-->
 					</div>
 				</div>
 

@@ -179,7 +179,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Select Advertise Language</label>
 										<div class="col-sm-10">
-											<select name="language" class="selectpicker">
+											<select name="language" class="selectpicker" required>
 											<optgroup label="Select Language">
 												<option value="1"> Marathi</option>
 												<option value="2"> Hindi</option>
@@ -192,7 +192,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Select Banner</label>
 										<div class="col-sm-10">
-											<input id="input-43" type="file" name="file" accept="image/*">
+											<input id="input-43" type="file" name="file" accept="image/*" required>
 											<div id="errorBlock43" class="help-block"></div>
 										</div>
 									</div>
