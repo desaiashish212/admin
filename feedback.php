@@ -181,7 +181,11 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					 <div class="row">
 					<div class="clearfix pt pb">
 						<div class="col-md-12">
-							<em><?php echo $_SESSION['MSG'] ?></em>
+						
+						 <div class="alert alert-dismissible alert-success">
+											<button type="button" class="close" data-dismiss="alert"><i class="fa fa-remove"></i></button>
+											<strong><?php echo $_SESSION['MSG'] ?> !</strong>
+										</div>
 						</div>
 					</div>
 				</div>					
@@ -199,13 +203,14 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											
 											
 							<div class="panel-body">
-								<table id="abs" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
 											<th>Name</th>
 											<th>Mobile Number</th>
 											<th >Feedback</th>
 											<th >Created at</th>
+											<th >Delete</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -214,6 +219,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 											<th>Mobile Number</th>
 											<th >Feedback</th>
 											<th >Created at</th>
+											<th >Delete</th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -228,7 +234,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 							<td > <? echo $row['1']; ?></td>	<!-- Title containt-->
 							<td > <? echo $row['2']; ?></td>	
 							<td > <? echo $row['3']; ?></td>	
-							<td > <? echo $row['4']; ?></td>	
+							<td > <? echo $row['4']; ?></td>
+							<td ><a href="delete_feed.php?id=<?= $row['0']?> " class="btn btn-danger ">Delete</a></td></td>	
 						</tr>
 					
 				<?  

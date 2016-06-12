@@ -240,8 +240,10 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- news containt-->
 					
 					
-						<td ><a href="categoryEnable.php?id=<? echo $row['0']; ?>&lang=2"><img src="img/enable.jpg" height="30" width="60"/></a>
-						<a href="h_update_category.php?id=<?= $row["id"]?> "><img src="img/button_edit.JPG" height="30" width="60"/></a>
+						<td >
+						<a href="categoryEnable.php?id=<? echo $row['0']; ?>&lang=2" class="btn btn-success">Enable</a>
+						
+						<a href="h_update_category.php?id=<?= $row["id"]?> " class="btn btn-primary">Edit</a>
 						
 						
 						<?
@@ -262,8 +264,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 						<!-- news containt-->
 					
 					
-						<td ><a href="h_delete_category.php?id=<?= $row["id"]?> "><img src="img/desable.jpg" height="30" width="60"/></a>
-						<a href="h_update_category.php?id=<?= $row["id"]?> "><img src="img/button_edit.JPG" height="30" width="60"/></a></td>
+						<td ><a href="h_delete_category.php?id=<?= $row["id"]?> " class="btn btn-warning">Desable</a>
+						<a href="h_update_category.php?id=<?= $row["id"]?> " class="btn btn-primary">Edit</a></td>
 						
 						<?
 							}//Eof else if status = 1

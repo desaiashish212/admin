@@ -180,8 +180,8 @@ include_once('connection.php');
 			{
 				$title =  $row['0']; 
 				$news = $row['1']; 	
-				$date = $row['4']; 	
-				$time = $row['3']; 	
+				$date = $row['3']; 	
+				$time = $row['2']; 	
 				$path = $row['5'];
 				$path2 = $row['6'];
 				?>

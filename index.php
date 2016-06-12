@@ -258,8 +258,8 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 	$graph = mysqli_query($con,"Select count(*) as counts, DATE_FORMAT(created_at, \"%Y-%m\") as \"_month\" 
 from users    
 group by _month
-order by _month 
-LIMIT 12");
+order by _month DESC
+LIMIT 5 ");
 
 	$jsonArray = array();
 	while($graph_result = mysqli_fetch_row($graph))
@@ -272,22 +272,23 @@ LIMIT 12");
 ?>	
 
 <script>
-	  var graphMonth = <?php echo json_encode($jsonArray[0][0]);?>;	
+	  var graphMonth = parseInt(<?php echo json_encode($jsonArray[0][0]);?>);
 	  var graphCount = <?php echo json_encode($jsonArray[0][1]);?>;	
 	  
-	  var graphMonth1 = <?php echo json_encode($jsonArray[1][0]);?>;	
+	  console.log("hi"+graphCount);
+	  var graphMonth1 = parseInt(<?php echo json_encode($jsonArray[1][0]);?>);	
 	  var graphCount1 = <?php echo json_encode($jsonArray[1][1]);?>;	
 	  
-	  var graphMonth2 = <?php echo json_encode($jsonArray[2][0]);?>;	
+	  var graphMonth2 = parseInt(<?php echo json_encode($jsonArray[2][0]);?>);	
 	  var graphCount2 = <?php echo json_encode($jsonArray[2][1]);?>;	
 	  
-	  var graphMonth3 = <?php echo json_encode($jsonArray[3][0]);?>;	
+	  var graphMonth3 = parseInt(<?php echo json_encode($jsonArray[3][0]);?>);	
 	  var graphCount3 = <?php echo json_encode($jsonArray[3][1]);?>;	
 	  
-	  var graphMonth4 = <?php echo json_encode($jsonArray[4][0]);?>;	
+	  var graphMonth4 = parseInt(<?php echo json_encode($jsonArray[4][0]);?>);	
 	  var graphCount4 = <?php echo json_encode($jsonArray[4][1]);?>;	
 	  
-	  /*
+	 /*
 	  var graphMonth5 = <?php echo json_encode($jsonArray[5][0]);?>;	
 	  var graphCount5 = <?php echo json_encode($jsonArray[5][1]);?>;	
 	  
@@ -308,6 +309,7 @@ LIMIT 12");
 	  
 	  var graphMonth11 = <?php echo json_encode($jsonArray[11][0]);?>;	
 	  var graphCount11 = <?php echo json_encode($jsonArray[11][1]);?>;
+	  
 	  */
 	  google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
@@ -321,14 +323,15 @@ LIMIT 12");
          [graphCount2,graphMonth2],
          [graphCount3,graphMonth3],
          [graphCount4,graphMonth4],
-        /* [graphCount5,graphMonth5],
+       /*
+         [graphCount5,graphMonth5],
          [graphCount6,graphMonth6],
          [graphCount7,graphMonth7],
          [graphCount8,graphMonth8],
          [graphCount9,graphMonth9],
          [graphCount10,graphMonth10],
          [graphCount11,graphMonth11],
-         */
+        */ 
         ]);
 
         var options = {

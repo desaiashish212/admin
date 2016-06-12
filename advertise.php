@@ -228,13 +228,13 @@ t
 						<td > <? echo $row['2']; ?></td>	
 						<!-- news containt-->
 					
-						<td ><a href="delete_banner.php?id=<?= $row["id"]?> "><img src="img/delete.jpg" height="30" width="60"/></a></td>
+						<td ><a href="delete_banner.php?id=<?= $row["id"]?> " class="btn btn-danger">Delete</a></td>
 						<td >
 						<?
 								if($row['3']==1){
-						?>			<a href="worker_update_advertise.php?id=<?= $row["id"]?> &status=0" class="btn btn-success">Disable</a>
+						?>			<a href="worker_update_advertise.php?id=<?= $row["id"]?> &status=0" class="btn btn-warning">Disable</a>
 						<?		}else{
-						?>			<a href="worker_update_advertise.php?id=<?= $row["id"]?> &status=1" class="btn btn-danger">Enable</a>
+						?>			<a href="worker_update_advertise.php?id=<?= $row["id"]?> &status=1" class="btn btn-success">Enable</a>
 						<?		}
 							?>
 						</tr>
