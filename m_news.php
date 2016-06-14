@@ -146,7 +146,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 				<li><a href="users.php"><i class="fa fa-users"></i> Users</a></li>
 				<li ><a href="advertise.php" ><i class="fa fa-briefcase"></i> Advertise</a></li>
 				<li><a href="notifications.php"><i class="fa fa-bell"></i> Notifications</a></li>
-				<li><a href="feedback.php"><i class="fa fa-envelopet"></i> Feedbacks</a></li>
+				<li><a href="feedback.php"><i class="fa fa-envelope"></i> Feedbacks</a></li>
 
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">

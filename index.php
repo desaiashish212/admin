@@ -157,8 +157,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 					<li class="ts-account">
 						<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
 						<ul>
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Edit Account</a></li>
+							<li><a href="change_password.php">Change password</a></li>
 							<li><a href="logout.php">Logout</a></li>
 						</ul>
 					</li>
@@ -243,6 +242,7 @@ if(isset($_SESSION["id"]) and isset($_SESSION["user"]))
 								</div>
 							</div>
 						</div>
+						
 
 						<div class="row">
 							<div class="col-md-6">
@@ -529,6 +529,73 @@ flash
 								</div>
 							</div>
 						</div>
+			<!--#######	PRIVACY POLICY and DONATIONS-->			
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Edit privacy policy, account details</div>
+				<div class="panel-body">
+					<div class="col-md-6">
+					<a href="privacy.php"><div class="panel-heading">Privacy and policy</div></a>
+						<form method="post" action="updateprivacy.php">
+							<div class="form-group">
+							<? 
+								$res = mysqli_query($con,"SELECT other.privacy FROM other");	
+								$row = mysqli_fetch_row($res);
+							?>
+									<textarea name="privacy" class="form-control" rows=10><?echo $row['0'];?></textarea>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-6 col-sm-offset-3">
+									<button class="btn btn-primary" type="submit" value="submit">Update privacy and policy</button>
+								</div>
+							</div>
+						</form>
+						<?if(isset($_SESSION["PRI"]))
+{
+?>
+						<div class="text-center text-light">
+							<h4 style="color: red"><? echo $_SESSION["PRI"]; ?></h4>
+						</div>
+<?
+					unset($_SESSION["PRI"]);
+}
+?>
+					</div>
+					
+					<div class="col-md-6">
+					<a href="donate.php"><div class="panel-heading">Donations</div></a>
+						<form method="post" action="updatedonation.php">
+							<div class="form-group">
+							<? 
+								$res = mysqli_query($con,"SELECT other.donation FROM other");	
+								$row = mysqli_fetch_row($res);
+							?>
+							
+									<textarea name="donation" class="form-control" rows=10><?echo $row['0'];?></textarea>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-6 col-sm-offset-3">
+									<button class="btn btn-primary" type="submit" value="submit">Update donation details	</button>
+								</div>
+							</div>
+							<?if(isset($_SESSION["DON"]))
+{
+?>
+						<div class="text-center text-light">
+							<h4 style="color: red"><? echo $_SESSION["DON"]; ?></h4>
+						</div>
+<?
+					unset($_SESSION["DON"]);
+}
+?>
+						</form>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>			
+						
 			<!--
 				#################################################################
 			-->
