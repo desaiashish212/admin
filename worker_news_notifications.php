@@ -33,7 +33,7 @@
     $pushMessage = $_GET['title'];
     if(isset($gcmRegIds) && isset($pushMessage)) {
 
-        $message = array('message' => $pushMessage,'id'=>$id,'status'=>$status);
+        $message = array('message' => $pushMessage,'id'=>$id,'status'=>$status,'language'=>$languages);
         $pushStatus = sendPushNotification($gcmRegIds, $message);
 	
 		if($pushStatus>0){

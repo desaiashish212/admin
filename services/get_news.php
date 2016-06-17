@@ -9,12 +9,12 @@ if (isset($_POST['id'])) {
 	 $id =$_POST['id'];
 	 $status =$_POST['status'];
 	 $language =$_POST['language'];
-	if(strcmp($language,"ma")==0){
+	if($language==1){
 		$result = mysqli_query($con,"SELECT * FROM marathi where id='$id' AND status='$status' ORDER BY id DESC LIMIT 1") or die(mysql_error());
-	}else if(strcmp($language,"hi")==0){
-		$result = mysqli_query($con,"SELECT * FROM hindi where id='$id' ORDER BY id DESC LIMIT 15") or die(mysql_error($con));
-	}else if(strcmp($language,"en")==0){
-		$result = mysqli_query($con,"SELECT * FROM eng where id='$id' ORDER BY id DESC LIMIT 15") or die(mysql_error($con));
+	}else if($language==2){
+		$result = mysqli_query($con,"SELECT * FROM hindi where id='$id' ORDER BY id DESC LIMIT 1") or die(mysql_error($con));
+	}else if($language==3){
+		$result = mysqli_query($con,"SELECT * FROM eng where id='$id' ORDER BY id DESC LIMIT 1") or die(mysql_error($con));
 	}
 	
 	if($result){
