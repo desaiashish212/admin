@@ -49,10 +49,10 @@
 								<form method="post" action="worker_login.php"class="mt">
 
 									<label for="" class="text-uppercase text-sm">Your Username or Email</label>
-									<input type="text" id="username" name="username" placeholder="Username" class="form-control mb">
+									<input type="text" id="username" name="username" placeholder="Username" class="form-control mb" required>
 
 									<label for="" class="text-uppercase text-sm">Password</label>
-									<input type="password" id="password" name="password" placeholder="Password" class="form-control mb">
+									<input type="password" id="password" name="password" placeholder="Password" class="form-control mb" required>
 
 									<button class="btn btn-primary btn-block" name="submit" type="submit" value="Login">LOGIN</button>
 			<?

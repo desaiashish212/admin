@@ -49,10 +49,10 @@
 								<form method="post" action="change_pass.php"class="mt">
 
 									<label for="" class="text-uppercase text-sm">Your old password</label>
-									<input type="password" id="oldpass" name="oldpass" placeholder="Old passwoird" class="form-control mb">
+									<input type="password" id="oldpass" name="oldpass" placeholder="Old passwoird" class="form-control mb" required>
 
 									<label for="" class="text-uppercase text-sm">New password</label>
-									<input type="password" id="newpass" name="newpass" placeholder="New Password" class="form-control mb">
+									<input type="password" id="newpass" name="newpass" placeholder="New Password" class="form-control mb" required>
 
 									
 
