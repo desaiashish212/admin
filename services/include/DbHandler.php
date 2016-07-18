@@ -175,6 +175,20 @@ class DbHandler {
         $stmt->execute();
     }
 	
+	public function resendOtp($mobile){
+       $stmt = $this->conn->prepare("SELECT sms_codes.`code` FROM sms_codes INNER JOIN users ON users.id = sms_codes.user_id WHERE users.mobile_no = ?");
+        $stmt->bind_param("s", $mobile);
+        if ($stmt->execute()) {
+            // $user = $stmt->get_result()->fetch_assoc();
+            $stmt->bind_result($otp);
+            $stmt->fetch();
+            
+            return $otp;
+        } else {
+            return NULL;
+        }
+    }
+	
 	public function updateUser($name,$mobile, $email,$dob,$city,$pincode,$occupation){
         $stmt = $this->conn->prepare("UPDATE users set name=?,email=?,birth=?,city=?,pincode=?,occupation=? where mobile_no = ?");
         $stmt->bind_param("sssssss", $name,$email,$dob,$city,$pincode,$occupation,$mobile);
