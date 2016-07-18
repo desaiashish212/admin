@@ -23,7 +23,7 @@ if (isset($_POST['mobile']) && $_POST['mobile'] != '') {
     if ($res == USER_CREATED_SUCCESSFULLY) {
         
         // send sms
-      //  sendSms($mobile, $otp);
+        sendSms($mobile, $otp);
         
         $response["error"] = false;
         $response["message"] = "SMS request is initiated! You will be receiving it shortly.";
@@ -39,7 +39,7 @@ if (isset($_POST['mobile']) && $_POST['mobile'] != '') {
 		$rescheck=  $db->updateUserOTP($mobile, $otp);
 		if($rescheck==0 && $ad==0)
 		{
-			//sendSms($mobile, $otp);
+			sendSms($mobile, $otp);
 			$response["error"] = false;
 			$response["otp"] = $otp;
 				$response["message"] = "Mobile number already existed!";
@@ -62,7 +62,7 @@ function sendSms($mobile, $otp) {
     $otp_prefix = ':';
 
     //Your message to send, Add URL encoding here.
-    $message = urlencode("Hello! Welcome to Frenzapp. Your OPT is '$otp_prefix $otp'");
+    $message = urlencode("Hello! Welcome to Dhangar Mahasabha. Your OPT is $otp_prefix $otp");
 
     $response_type = 'json';
 
@@ -71,10 +71,10 @@ function sendSms($mobile, $otp) {
     
     //Prepare you post parameters
     $postData = array(
-        'authkey' => MSG91_AUTH_KEY,
+        'authkey' => BULKSMS_AUTH_KEY,
         'mobiles' => $mobile,
         'message' => $message,
-        'sender' => MSG91_SENDER_ID,
+        'sender' => BULKSMS_SENDER_ID,
         'route' => $route,
         'response' => $response_type
     );

@@ -19,7 +19,7 @@ if (isset($_GET['state'])) {
 	}else{
 		$response["message"] = "No District found";
 	}
-	district
+
 } else {
     
     $response["message"] = "Required field(s) is missing";
